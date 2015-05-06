@@ -19,8 +19,8 @@
     <div class="list card">
       <div class="item item-divider">Upcoming</div>
       <div class="item item-body">
-        <div ng-click="callModal();openModal();">
-          You have <b>4</b> meetings on your calendar tomorrow. (Modal Demo)
+        <div class="balanced-bg" on-hold="callModal();openModal();">
+          You have <b>4</b> meetings on your calendar tomorrow. (Hold for Modal Demo)
         </div>
       </div>
     </div>
@@ -33,24 +33,13 @@
       <h1 class="title">Upcoming</h1>
     </ion-header-bar>
     <ion-content>
-      <ul>
-        <li>9:00 AM : Brunch with the president</li>
-        <li>10:00 AM : Suplex a bear</li>
-        <li>12:00 Noon : Repair Warp Core</li>
-        <li>2:00 PM : Late Lunch (Foie Gras Stuffed Faberge Eggs</li>
+      <ul class="list">
+        <li class="item">9:00 AM : Brunch with the president</li>
+        <li class="item">10:00 AM : Suplex a bear</li>
+        <li class="item">12:00 Noon : Repair Warp Core</li>
+        <li class="item">2:00 PM : Late Lunch (Foie Gras Stuffed Faberge Eggs)</li>
       </ul>
+      <button class="button button-full  button-energized" ng-click="callModal();closeModal();">OK</button>
     </ion-content>
-    <ion-tabs class="tabs-color-active-positive">
-      <ion-tab ng-click="callModal();closeModal();" title="OK">
-        <ion-content >
-          <p>OK</p>
-        </ion-content>
-      </ion-tab>
-      <ion-tab title="Cancel">
-        <ion-content>
-          <p>Cancel</p>
-        </ion-content>
-      </ion-tab>
-</ion-tabs>
   </ion-modal-view>
 </script>
