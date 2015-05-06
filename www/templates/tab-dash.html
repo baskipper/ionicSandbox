@@ -1,12 +1,22 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
+
     <div class="list card">
       <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
+        <div ng-controller="SlideBoxCtrl">
+          <ion-slide-box show-pager="false" on-slide-changed="slideChanged($index)">
+            <ion-slide ng-repeat="item in messages track by $index">
+              <div class="item item-body">
+                <div>
+                  {{item}}
+                  <button ng-hide="$index == messages.length-1" class = "button-clear icon ion-chevron-right" style=" float: right"></button>
+                  <button ng-hide="$index == 0" class = "button-clear icon ion-chevron-left" style=" float: left"></button>
+                </div>
+
+              </div>
+            </ion-slide>
+          </ion-slide-box>
         </div>
-      </div>
     </div>
     <div class="list card">
       <div class="item item-divider">Health</div>
@@ -30,9 +40,11 @@
 <script id="modal.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar class="bar-positive">
-      <h1 class="title">Upcoming</h1>
+      <h3 class="title">Upcoming</h3>
+
     </ion-header-bar>
     <ion-content>
+      <h6 class="text-center">(Swipe for options)</h6>
       <ion-list class="list" ng-controller="ModalCtrl" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
         <ion-item ng-repeat="item in listData">
           {{item.time}}: {{item.event}}

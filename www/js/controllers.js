@@ -28,6 +28,11 @@ angular.module('starter.controllers', [])
             });
 
     })
+
+    .controller('SlideBoxCtrl', function ($scope) {
+        $scope.currentIndex = 0;
+        $scope.messages = ['There is a fire in <b>sector 3</b>','Fire in <b>sector 3</b> extinguished', 'Reconstruction has begun on <b>sector 3</b>'];
+    })
     
     .controller('ModalCtrl', function ($scope) {
         $scope.listData = [
