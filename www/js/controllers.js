@@ -1,8 +1,15 @@
 angular.module('starter.controllers', [])
+    
+    
+    .controller('MainCtrl', function ($scope) {
+       $scope.thisfunction = function () {
+           console.log("Clicked");
+       }
+    })
 
 .controller('DashCtrl', function($scope, $ionicModal) {
 
-            $ionicModal.fromTemplateUrl('modal.html', {
+            $ionicModal.fromTemplateUrl('templates/modals/modal.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function (modal) {
@@ -39,7 +46,7 @@ angular.module('starter.controllers', [])
             {time: '9:00 AM', event: 'Brunch with President'},
             {time: '10:00AM', event: 'Suplex a Bear'},
             {time: '12:00 Noon', event: 'Repair Warp Core'},
-            {time: '2:00 PM', event: 'Late Lunch(Foie Gras Stuffed Faberge Eggs'}
+            {time: '2:00 PM', event: 'Late Lunch(Foie Gras Stuffed Faberge Eggs)'}
         ];
 
         $scope.reorderItem = function (item, fromIndex, toIndex) {

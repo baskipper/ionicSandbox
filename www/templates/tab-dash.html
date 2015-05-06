@@ -1,61 +1,46 @@
 <ion-view view-title="Dashboard">
-  <ion-content class="padding">
+    <ion-nav-buttons side="right">
+        <div ng-controller="MainCtrl" >
+        <button class="button button-icon ion-more" ng-click="thisfunction()">
+        </button>
+        </div>
+    </ion-nav-buttons>
+    <ion-content class="padding">
 
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-        <div ng-controller="SlideBoxCtrl">
-          <ion-slide-box show-pager="false" on-slide-changed="slideChanged($index)">
-            <ion-slide ng-repeat="item in messages track by $index">
-              <div class="item item-body">
+        <div class="list card">
+            <div class="item item-divider">Recent Updates</div>
+            <div ng-controller="SlideBoxCtrl">
+                <ion-slide-box show-pager="false" on-slide-changed="slideChanged($index)">
+                    <ion-slide ng-repeat="item in messages track by $index">
+                        <div class="item item-body">
+                            <div class="text-center">
+                                <span ng-bind-html="item"></span>
+                                <button disabled="true" ng-hide="$index == messages.length-1"
+                                        class="button-clear icon ion-chevron-right rightArrow"></button>
+                                <button disabled="true" ng-hide="$index == 0"
+                                        class="button-clear icon ion-chevron-left leftArrow"></button>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+        <div class="list card">
+            <div class="item item-divider">Health</div>
+            <div class="item item-body">
                 <div>
-                  <span ng-bind-html="item"></span>
-                  <button ng-hide="$index == messages.length-1" class = "button-clear icon ion-chevron-right" style=" float: right"></button>
-                  <button ng-hide="$index == 0" class = "button-clear icon ion-chevron-left" style=" float: left"></button>
+                    You ate an apple today!
                 </div>
-
-              </div>
-            </ion-slide>
-          </ion-slide-box>
+            </div>
         </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Health</div>
-      <div class="item item-body">
-        <div>
-          You ate an apple today!
+        <div ng-controller="ModalCtrl" class="list card">
+            <div class="item item-divider">Upcoming</div>
+            <div class="item item-body">
+                <div class="balanced-bg" on-hold="callModal();openModal();">
+                    You have <b>{{listData.length}}</b> meetings on your calendar tomorrow. (Hold for Modal Demo)
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div class="balanced-bg" on-hold="callModal();openModal();">
-          You have <b>4</b> meetings on your calendar tomorrow. (Hold for Modal Demo)
-        </div>
-      </div>
-    </div>
-  </ion-content>
+    </ion-content>
 </ion-view>
 
-<script id="modal.html" type="text/ng-template">
-  <ion-modal-view>
-    <ion-header-bar class="bar-positive">
-      <h3 class="title">Upcoming</h3>
-
-    </ion-header-bar>
-    <ion-content>
-      <h6 class="text-center">(Swipe for options)</h6>
-      <ion-list class="list" ng-controller="ModalCtrl" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
-        <ion-item ng-repeat="item in listData">
-          {{item.time}}: {{item.event}}
-          <ion-option-button class="button-positive" ng-click="share(item)">Share</ion-option-button>
-          <ion-option-button class="button-info" ng-click="edit(item)">Edit</ion-option-button>
-          <ion-delete-button class="ion-minus-circled" ng-click="listData.splice($index, 1)">
-          </ion-delete-button>
-          <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
-        </ion-item>
-      </ion-list>
-      <button class="button button-full  button-energized" ng-click="callModal();closeModal();">OK</button>
-    </ion-content>
-  </ion-modal-view>
-</script>
