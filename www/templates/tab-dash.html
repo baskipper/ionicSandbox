@@ -8,7 +8,7 @@
             <ion-slide ng-repeat="item in messages track by $index">
               <div class="item item-body">
                 <div>
-                  {{item}}
+                  <span ng-bind-html="item"></span>
                   <button ng-hide="$index == messages.length-1" class = "button-clear icon ion-chevron-right" style=" float: right"></button>
                   <button ng-hide="$index == 0" class = "button-clear icon ion-chevron-left" style=" float: left"></button>
                 </div>
