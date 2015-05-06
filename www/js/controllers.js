@@ -28,6 +28,24 @@ angular.module('starter.controllers', [])
             });
 
     })
+    
+    .controller('ModalCtrl', function ($scope) {
+        $scope.listData = [
+            {time: '9:00 AM', event: 'Brunch with President'},
+            {time: '10:00AM', event: 'Suplex a Bear'},
+            {time: '12:00 Noon', event: 'Repair Warp Core'},
+            {time: '2:00 PM', event: 'Late Lunch(Foie Gras Stuffed Faberge Eggs'}
+        ];
+
+        $scope.reorderItem = function (item, fromIndex, toIndex) {
+            $scope.listData.splice(fromIndex, 1);
+            $scope.listData.splice(toIndex, 0, item);
+        };
+
+        $scope.shouldShowDelete = false;
+        $scope.shouldShowReorder = false;
+        $scope.listCanSwipe = true;
+    })
 
 .controller('ChatsCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();
