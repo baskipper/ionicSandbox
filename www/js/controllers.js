@@ -1,10 +1,37 @@
 angular.module('starter.controllers', [])
     
     
-    .controller('MainCtrl', function ($scope) {
+    .controller('MainCtrl', function ($scope, $ionicPopover) {
        $scope.thisfunction = function () {
            console.log("Clicked");
        }
+
+        $ionicPopover.fromTemplateUrl('templates/mypopover.html', {
+            scope: $scope
+        }).then(function(popover) {
+            $scope.popover = popover;
+        });
+
+
+        $scope.openPopover = function($event) {
+            console.log( $scope.popover);
+            $scope.popover.show($event);
+        };
+        $scope.closePopover = function() {
+            $scope.popover.hide();
+        };
+        //Cleanup the popover when we're done with it!
+        $scope.$on('$destroy', function() {
+            $scope.popover.remove();
+        });
+        // Execute action on hide popover
+        $scope.$on('popover.hidden', function() {
+            // Execute action
+        });
+        // Execute action on remove popover
+        $scope.$on('popover.removed', function() {
+            // Execute action
+        });
     })
 
 .controller('DashCtrl', function($scope, $ionicModal) {
@@ -36,9 +63,17 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('SlideBoxCtrl', function ($scope) {
-        $scope.currentIndex = 0;
+    .controller('SlideBoxCtrl', function ($scope, $ionicSlideBoxDelegate) {
+
         $scope.messages = ['There is a fire in <b>sector 3</b>','Fire in <b>sector 3</b> extinguished', 'Reconstruction has begun on <b>sector 3</b>'];
+
+        $scope.nextSlide = function (handleIn) {
+            $ionicSlideBoxDelegate.$getByHandle(handleIn).next();
+        };
+
+        $scope.previousSlide = function (handleIn) {
+            $ionicSlideBoxDelegate.$getByHandle(handleIn).previous();
+        };
     })
     
     .controller('ModalCtrl', function ($scope) {

@@ -1,7 +1,7 @@
 <ion-view view-title="Dashboard">
     <ion-nav-buttons side="right">
         <div ng-controller="MainCtrl" >
-        <button class="button button-icon ion-more" ng-click="thisfunction()">
+        <button class="button button-icon ion-more" ng-click="openPopover($event)">
         </button>
         </div>
     </ion-nav-buttons>
@@ -10,14 +10,14 @@
         <div class="list card">
             <div class="item item-divider">Recent Updates</div>
             <div ng-controller="SlideBoxCtrl">
-                <ion-slide-box show-pager="false" on-slide-changed="slideChanged($index)">
+                <ion-slide-box delegate-handle="updateBox" show-pager="false" on-slide-changed="slideChanged($index)">
                     <ion-slide ng-repeat="item in messages track by $index">
                         <div class="item item-body">
                             <div class="text-center">
                                 <span ng-bind-html="item"></span>
-                                <button disabled ng-hide="$index == messages.length-1"
+                                <button ng-click="nextSlide('updateBox')"  ng-hide="$index == messages.length-1"
                                         class="button-clear icon ion-chevron-right rightArrow"></button>
-                                <button disabled ng-hide="$index == 0"
+                                <button ng-click="previousSlide('updateBox')"  ng-hide="$index == 0"
                                         class="button-clear icon ion-chevron-left leftArrow"></button>
                             </div>
                         </div>

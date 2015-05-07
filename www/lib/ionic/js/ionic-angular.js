@@ -2929,7 +2929,7 @@ IonicModule
  *   <button ng-click="openPopover($event)">Open Popover</button>
  * </p>
  *
- * <script id="my-popover.html" type="text/ng-template">
+ * <script id="my-mypopover.html" type="text/ng-template">
  *   <ion-popover-view>
  *     <ion-header-bar>
  *       <h1 class="title">My Popover Title</h1>
@@ -2952,7 +2952,7 @@ IonicModule
  *   });
  *
  *   // .fromTemplateUrl() method
- *   $ionicPopover.fromTemplateUrl('my-popover.html', {
+ *   $ionicPopover.fromTemplateUrl('my-mypopover.html', {
  *     scope: $scope
  *   }).then(function(popover) {
  *     $scope.popover = popover;
