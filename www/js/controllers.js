@@ -41,11 +41,14 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('truckCodeCtrl', function($scope) {
+.controller('truckCodeCtrl', function($scope, TicketService) {
 
   $scope.setTruckCode = function(truckCode)
   {
+
     console.log('TruckCode Set to ' + truckCode);
+    TicketService.setTruckCode(truckCode);
+    console.log('TruckCode saved to TicketService as ' + TicketService.truckCode)
   };
 })
 
