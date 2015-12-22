@@ -1,146 +1,56 @@
 angular.module('starter.controllers', [])
-    
-    
-    .controller('MainCtrl', function ($scope, $ionicPopover) {
-       $scope.thisfunction = function () {
-           console.log("Clicked");
-       }
 
-        $ionicPopover.fromTemplateUrl('templates/mypopover.html', {
-            scope: $scope
-        }).then(function(popover) {
-            $scope.popover = popover;
-        });
+.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
 
-        $scope.openPopover = function($event) {
-            console.log( $scope.popover);
-            $scope.popover.show($event);
-        };
-        $scope.closePopover = function() {
-            $scope.popover.hide();
-        };
-        //Cleanup the popover when we're done with it!
-        $scope.$on('$destroy', function() {
-            $scope.popover.remove();
-        });
-        // Execute action on hide popover
-        $scope.$on('popover.hidden', function() {
-            // Execute action
-        });
-        // Execute action on remove popover
-        $scope.$on('popover.removed', function() {
-            // Execute action
-        });
-    })
+  // Form data for the login modal
+  $scope.loginData = {};
 
-.controller('DashCtrl', function($scope, $ionicModal) {
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/login.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
-            $ionicModal.fromTemplateUrl('templates/modals/modal.html', {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function (modal) {
-                $scope.modal = modal;
-            });
-            $scope.openModal = function () {
-                $scope.modal.show();
-            };
-            $scope.closeModal = function () {
-                $scope.modal.hide();
-            };
-            $scope.$on('$destroy', function () {
-                $scope.modal.remove();
-            });
+  // Triggered in the login modal to close it
+  $scope.closeLogin = function() {
+    $scope.modal.hide();
+  };
 
-            // Execute action on hide modal
-            $scope.$on('modal.hidden', function () {
-                // Execute action
-            });
-            // Execute action on remove modal
-            $scope.$on('modal.removed', function () {
-                // Execute action
-            });
+  // Open the login modal
+  $scope.login = function() {
+    $scope.modal.show();
+  };
 
-    })
+  // Perform the login action when the user submits the login form
+  $scope.doLogin = function() {
+    console.log('Doing login', $scope.loginData);
 
-    .controller('SlideBoxCtrl', function ($scope, $ionicSlideBoxDelegate) {
-
-        $scope.messages = ['There is a fire in <b>sector 3</b>','Fire in <b>sector 3</b> extinguished', 'Reconstruction has begun on <b>sector 3</b>'];
-
-        $scope.nextSlide = function (handleIn) {
-            $ionicSlideBoxDelegate.$getByHandle(handleIn).next();
-        };
-
-        $scope.previousSlide = function (handleIn) {
-            $ionicSlideBoxDelegate.$getByHandle(handleIn).previous();
-        };
-    })
-    
-    .controller('ModalCtrl', function ($scope) {
-        $scope.listData = [
-            {time: '9:00 AM', event: 'Brunch with President'},
-            {time: '10:00AM', event: 'Suplex a Bear'},
-            {time: '12:00 Noon', event: 'Repair Warp Core'},
-            {time: '2:00 PM', event: 'Late Lunch(Foie Gras Stuffed Faberge Eggs)'}
-        ];
-
-        $scope.reorderItem = function (item, fromIndex, toIndex) {
-            $scope.listData.splice(fromIndex, 1);
-            $scope.listData.splice(toIndex, 0, item);
-        };
-
-        $scope.shouldShowDelete = false;
-        $scope.shouldShowReorder = false;
-        $scope.listCanSwipe = true;
-    })
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+    // Simulate a login delay. Remove this and replace with your login
+    // code if using a login system
+    $timeout(function() {
+      $scope.closeLogin();
+    }, 1000);
   };
 })
 
-.controller('ActionsCtrl', function($scope, $ionicActionSheet, $ionicBackdrop, $timeout){
+.controller('PlaylistsCtrl', function($scope) {
+  $scope.playlists = [
+    { title: 'Reggae', id: 1 },
+    { title: 'Chill', id: 2 },
+    { title: 'Dubstep', id: 3 },
+    { title: 'Indie', id: 4 },
+    { title: 'Rap', id: 5 },
+    { title: 'Cowbell', id: 6 }
+  ];
+})
 
-      $scope.backdropExample = function () {
-        $ionicBackdrop.retain();
-        $timeout(function () {
-          $ionicBackdrop.release();
-        }, 1000)
-      };
-
-      $scope.show = function () {
-
-        var hideSheet = $ionicActionSheet.show({
-          buttons: [
-            {text: 'Item 1'},
-            {text: 'Item 2'}
-          ],
-          destructiveText: 'Destroy All',
-          titleText: 'Options',
-          cancelText: 'Never Mind',
-          cancel: function(){
-
-          },
-          buttonClicked: function(index, buttonIn){
-            console.log('You clicked ' + buttonIn.text);
-            return true;
-          }
-        })
-      }
-
-    })
-
-
-;
+.controller('PlaylistCtrl', function($scope, $stateParams) {
+});
