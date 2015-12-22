@@ -36,17 +36,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ticket.services'])
     url: '/wait',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html',
+        templateUrl: 'templates/wait.html',
         controller: 'waitCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('ticket.hauler', {
+      url: '/hauler',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/browse.html',
+          controller: 'haulerCtrl'
         }
       }
     })

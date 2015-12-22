@@ -53,10 +53,15 @@ angular.module('starter.controllers', [])
   })
 
   .controller('waitCtrl', function ($scope, TicketService, $state, $timeout) {
-
-    $timeout(function () {
       $scope.truckCode = TicketService.getTruckCode();
-    })
+
+    $timeout(function(){
+      $state.go('ticket.hauler');
+    }, 5000)
+  })
+
+  .controller('haulerCtrl', function ($scope, TicketService, $state, $timeout) {
+    $scope.truckCode = TicketService.getTruckCode();
   })
 
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
