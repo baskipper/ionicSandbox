@@ -1,0 +1,20 @@
+<ion-view view-title="Truck Code">
+  <ion-content class="padding">
+
+    <div class="row" style="text-align:center; font-size:large;">
+      <div class="col-50 col-offset-20">
+        Enter Truck Code
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50 col-offset-25">
+        <input ng-model="truckCode" class="item item-input" style="border:1px solid black; width:87%;" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50 col-offset-25">
+        <button on-tap="setTruckCode(truckCode)" class="button button-calm" style="width: 87%;">Save</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
