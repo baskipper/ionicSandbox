@@ -32,8 +32,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ticket.services'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('ticket.waitView', {
+    url: '/wait',
     views: {
       'menuContent': {
         templateUrl: 'templates/search.html'

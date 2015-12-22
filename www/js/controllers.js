@@ -41,14 +41,15 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('truckCodeCtrl', function($scope, TicketService) {
+.controller('truckCodeCtrl', function($scope, TicketService, $state) {
 
   $scope.setTruckCode = function(truckCode)
   {
 
     console.log('TruckCode Set to ' + truckCode);
     TicketService.setTruckCode(truckCode);
-    console.log('TruckCode saved to TicketService as ' + TicketService.truckCode)
+    console.log('TruckCode saved to TicketService as ' + TicketService.truckCode);
+    $state.go('ticket.waitView')
   };
 })
 
