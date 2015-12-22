@@ -53,15 +53,32 @@ angular.module('starter.controllers', [])
   })
 
   .controller('waitCtrl', function ($scope, TicketService, $state, $timeout) {
-      $scope.truckCode = TicketService.getTruckCode();
+    $scope.truckCode = TicketService.getTruckCode();
 
-    $timeout(function(){
+    $timeout(function () {
       $state.go('ticket.hauler');
     }, 5000)
   })
 
   .controller('haulerCtrl', function ($scope, TicketService, $state, $timeout) {
-    $scope.truckCode = TicketService.getTruckCode();
+    $scope.ticket = {
+
+      startTime: "2015-07-31T07:00:00",
+      schedLoadDateTime: "1999-12-30T12:34:00",
+      schedDeliverDateTime: "1999-12-30T15:16:00",
+      productDescription: "BM-1 Base Mix",
+      dispatchNo: 827,
+      orderID: "10524",
+      truckCode: TicketService.getTruckCode(),
+      purchaseOrder: 'po numb3r',
+      locationID: "10",
+      customerName: "A & K PAVING COMPANY",
+      address1: "8085 Bell Rd",
+      address3: "SHAW MISSION, KS, 66219",
+
+
+
+    };
   })
 
   .controller('PlaylistCtrl', function ($scope, $stateParams) {
