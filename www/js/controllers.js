@@ -69,8 +69,10 @@ angular.module('starter.controllers', [])
         if ($scope.waterAdded != 0){
           $scope.waterAdded--;
         }
-
       };
+    $scope.submitWater = function(){
+      $state.go('ticket.ticket')
+    };
   })
 
   .controller('haulerCtrl', function ($scope, TicketService, $state, $timeout) {
