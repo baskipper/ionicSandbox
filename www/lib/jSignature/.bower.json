@@ -1,0 +1,31 @@
+{
+  "name": "jSignature",
+  "homepage": "https://github.com/brinley/jSignature",
+  "description": "jQuery plugin for handling digital signatures",
+  "main": "jSignature.js",
+  "keywords": [
+    "jSignature",
+    "signature",
+    "jQuery"
+  ],
+  "authors": [
+    "Brinley Ang"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "ed5b9d9d92",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ed5b9d9d92482573f0581bdd919da4671d24cfb3"
+  },
+  "_source": "git://github.com/brinley/jSignature.git",
+  "_target": "*",
+  "_originalSource": "jSignature"
+}

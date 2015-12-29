@@ -46,7 +46,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ticket.services'])
       url: '/hauler',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html',
+          templateUrl: 'templates/hauler.html',
           controller: 'haulerCtrl'
         }
       }
@@ -61,8 +61,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ticket.services'])
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+    .state('ticket.water', {
+      url: '/water',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/water.html',
+          controller: 'waterCtrl'
+        }
+      }
+    })
+
+  .state('ticket.ticket', {
+    url: '/playlists',
     views: {
       'menuContent': {
         templateUrl: 'templates/playlist.html',

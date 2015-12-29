@@ -1,5 +1,208 @@
-<ion-view view-title="Playlist">
+<ion-view view-title="Ticket Information">
   <ion-content>
-    <h1>Playlist</h1>
+    <div class="row">
+      <div class="col">
+        <label class=>Date</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.order.date | date: "shortDate" : "UTC"}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Scheduled</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.scheduledTime | date: "shortDate" : "UTC"}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Mix</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketLines[0].itemDesc | date: 'hh:mm a'}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Order Qty</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketLines[0].orderedQty}} {{ticket.ticketLines[0].orderedUOM}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Shipped Qty</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketLines[0].shippedQty}} {{ticket.ticketLines[0].shippedUOM}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Slump</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.targetSlump}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Truck</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.truckCode}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Driver</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.driver.name || 'N/A'}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Plant</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.location.plantCode || 'N/A'}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Customer Information</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.soldToCustomer.name}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.soldToCustomer.address.city}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.soldToCustomer.address.countrySubdivision}} {{ticket.soldToCustomer.address.postalCode}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Delivery Information</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.shipToCustomer.name}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.shipToCustomer.address.lineOne}} {{ticket.shipToCustomer.address.lineTwo || " "}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.shipToCustomer.address.countrySubdivision}} {{ticket.shipToCustomer.address.postalCode}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>COD</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>
+          <label class=>Amount: {{ticket.totalPrice + ticket.tax | currency}}</label>
+        </p>
+        <p><label class=>Method:{{ticket.selectedPayment.type}}</label></p>
+        <label class=>Collected:{{ticket.selectedPayment.amount | currency}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.orderDescription}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Load Time</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketTimes[0].value || "N/A"}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Left Plant</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketTimes[1].value || "N/A"}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Arrive At Job</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketTimes[2].value || "N/A"}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Begin Unload</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketTimes[3].value || "N/A"}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>Finish Unload</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class=>{{ticket.ticketTimes[4].value || "N/A"}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button on-tap="submitTicket()" class="button button-balanced" style="width:100%;">Submit</button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
