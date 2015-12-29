@@ -60,6 +60,13 @@ angular.module('starter.controllers', [])
     }, 5000)
   })
 
+  .controller('finalizeCtrl', function ($scope, TicketService, $state, $timeout) {
+    $scope.finalizeTicket = function(){
+      TicketService.setTicketSubmitted(false);
+      $state.go('ticket.waitView');
+    };
+  })
+
   .controller('waterCtrl', function ($scope, TicketService, $state, $timeout) {
       $scope.waterAdded = 0;
       $scope.increaseWater = function(){
@@ -202,7 +209,8 @@ angular.module('starter.controllers', [])
       }
       else
       {
-        $state.go('');
+
+        $state.go('ticket.finalize');
       }
     };
     $scope.ticket = {

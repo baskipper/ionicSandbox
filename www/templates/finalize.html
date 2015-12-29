@@ -1,0 +1,63 @@
+<ion-view view-title="Finalize">
+  <ion-content>
+    <div class="row">
+      <div class="col">
+        <label>Driver Comments</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col item">
+        <input class="item-input" type="text" style="width:100%;"> </input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Customer Comments</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col item">
+        <input class="item-input" type="text" style="width:100%;"> </input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Email Address</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col item">
+        <input class="item-input" type="text" style="width:100%;"> </input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Terms and Conditions</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Warnings and Cautions</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Customer Comments</label>
+      </div>
+    </div>
+    <ion-list>
+      <ion-checkbox>Property Damage</ion-checkbox>
+      <ion-checkbox>Water Release</ion-checkbox>
+      <ion-checkbox>Driver Acceptance</ion-checkbox>
+
+    </ion-list>
+    <div class="row">
+      <div id="customer-signature-container" , data-ng-class="ticket.driverAccepted ? 'disabled' : ''">
+        <canvas id=’signatureCanvas’ width='300' height='180' style='border: 1px solid black;'></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <button on-tap="finalizeTicket()" class="button button-balanced" style="width:100%;">Submit</button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -71,6 +71,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ticket.services'])
       }
     })
 
+    .state('ticket.finalize', {
+      url: '/finalize',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/finalize.html',
+          controller: 'finalizeCtrl'
+        }
+      }
+    })
+
   .state('ticket.ticket', {
     url: '/playlists',
     views: {
