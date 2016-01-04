@@ -82,7 +82,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ticket.services'])
     })
 
   .state('ticket.ticket', {
-    url: '/playlists',
+    url: '/info',
     views: {
       'menuContent': {
         templateUrl: 'templates/ticket.html',

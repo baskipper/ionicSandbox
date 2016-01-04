@@ -13,7 +13,9 @@ angular.module('starter.controllers', [])
     $scope.loginData = {};
 
     // Create the login modal that we will use later
+
     $ionicModal.fromTemplateUrl('templates/login.html', {
+      id:'200adsf',
       scope: $scope
     }).then(function (modal) {
       $scope.modal = modal;
@@ -221,27 +223,80 @@ angular.module('starter.controllers', [])
   .controller('TicketCtrl', function ($scope, TicketService, $state, $stateParams, $ionicModal) {
 
     $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
+      id: '1',
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
-      $scope.modal = modal;
+      $scope.mixInfoModal = modal;
     });
     $scope.openModal = function () {
-      $scope.modal.show();
+      $scope.mixInfoModal.show();
     };
     $scope.closeModal = function () {
-      $scope.modal.hide();
+      $scope.mixInfoModal.hide();
     };
     $scope.$on('$destroy', function () {
-      $scope.modal.remove();
+      $scope.mixInfoModal.remove();
     });
 
     // Execute action on hide modal
-    $scope.$on('modal.hidden', function () {
+    $scope.$on('mixInfoModal.hidden', function () {
       // Execute action
     });
     // Execute action on remove modal
-    $scope.$on('modal.removed', function () {
+    $scope.$on('mixInfoModal.removed', function () {
+      // Execute action
+    });
+
+    $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
+      id: 'mixInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.mixInfoModal = modal;
+    });
+    $scope.openModal = function () {
+      $scope.mixInfoModal.show();
+    };
+    $scope.closeModal = function () {
+      $scope.mixInfoModal.hide();
+    };
+    $scope.$on('$destroy', function () {
+      $scope.mixInfoModal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('mixInfoModal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('mixInfoModal.removed', function () {
+      // Execute action
+    });
+
+    $ionicModal.fromTemplateUrl('templates/modals/ticketDeliveryInfo.html', {
+      id: 'deliveryInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.deliveryInfoModal = modal;
+    });
+    $scope.openModal = function () {
+      $scope.deliveryInfoModal.show();
+    };
+    $scope.closeModal = function () {
+      $scope.deliveryInfoModal.hide();
+    };
+    $scope.$on('$destroy', function () {
+      $scope.deliveryInfoModal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('deliveryInfoModal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('deliveryInfoModal.removed', function () {
       // Execute action
     });
 

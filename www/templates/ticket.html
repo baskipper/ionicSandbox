@@ -15,7 +15,7 @@
         <span>{{ticket.scheduledTime | date: "shortDate" : "UTC"}}</span>
       </li>
 
-      <li class="item" on-hold="openModal();">
+      <li class="item" on-hold="openModal(mixInfo);">
         <label class=>Mix</label>
         <br/>
         <span>{{ticket.ticketLines[0].itemDesc}}<span class="triangle-container"><span class="triangle-icon triangle-product" data-ng-class="[accepted]"></span></span></span>
