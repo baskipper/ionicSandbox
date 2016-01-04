@@ -1,184 +1,111 @@
 <ion-view view-title="Assignment Information">
   <ion-content>
-    <div class="row">
-      <div class="col">
-        <label class=>Date</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.dispatchDate | date: 'M/d/yy'}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Scheduled Load</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.schedLoadDateTime | date: 'hh:mm a'}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
+
+    <ul class="list">
+      <li class="item">
+        <label>Date</label>
+        <br/>
+        <span>{{ticket.dispatchDate | date: 'M/d/yy'}}</span>
+      </li>
+      <li class="item">
+        <label>Scheduled Load</label>
+        <br/>
+        <span>{{ticket.schedLoadDateTime | date: 'hh:mm a'}}</span>
+      </li>
+      <li class="item">
         <label class=>Scheduled Deliver</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.schedDeliverDateTime | date: 'hh:mm a'}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Product</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.productDescription}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Dispatch No</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.dispatchNo}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Order</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.orderID}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Truck</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.truckCode}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Purchase Order</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.purchaseOrder || 'N/A'}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Location ID</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.locationID || 'N/A'}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Source Information</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.customerName}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.address1}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.address3}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Delivery Information</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.locationName}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.locationAddress1}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.locationAddress3}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Order</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.orderID}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.orderDescription}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>Scheduled Load Size</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class=>{{ticket.quantityScheduled}}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
+        <br/>
+        <span class=>{{ticket.schedDeliverDateTime | date: 'hh:mm a'}}</span>
+      </li>
+
+      <li class="item">
+        <label>Product</label>
+        <br/>
+        <span class=>{{ticket.productDescription}}</span>
+      </li>
+
+      <li class="item">
+        <label>Dispatch No</label>
+        <br/>
+        <span class=>{{ticket.dispatchNo}}</span>
+      </li>
+
+      <li class="item">
+        <label>Order</label>
+        <br/>
+        <span>{{ticket.orderID}}</span>
+
+
+      <li class="item">
+        <label>Truck</label>
+        <br/>
+        <span>{{ticket.truckCode}}</span>
+      </li>
+
+      <li class="item">
+        <label>Purchase Order</label>
+        <br/>
+        <span>{{ticket.purchaseOrder || 'N/A'}}</span>
+      </li>
+
+      <li class="item">
+        <label>Location ID</label>
+        <br/>
+        <span class=>{{ticket.locationID || 'N/A'}}</span>
+      </li>
+
+      <li class="item">
+        <label>Source Information</label>
+        <br/>
+        <span>{{ticket.customerName}}</span>
+        <br/>
+        <span>{{ticket.address1}}</span>
+        <br/>
+        <span>{{ticket.address3}}</span>
+      </li>
+
+      <li class="item">
+        <label>Delivery Information</label>
+        <br/>
+        <span>{{ticket.locationName}}</span>
+        <br/>
+        <span>{{ticket.locationAddress1}}</span>
+        <br/>
+        <span>{{ticket.locationAddress3}}</span>
+      </li>
+
+      <li class="item">
+        <label>Order</label>
+        <br/>
+        <span>{{ticket.orderID}}</span>
+        <br/>
+        <span>{{ticket.orderDescription}}</span>
+      </li>
+
+      <li class="item">
+        <label>Scheduled Load Size</label>
+        <br/>
+        <span>{{ticket.quantityScheduled}}</span>
+      </li>
+
+      <li class="item">
         <label class=>Reference Ticket</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col item">
+        <br/>
         <input class="item-input" type="text"> </input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
+      </li>
+
+      <li class="item">
         <label class=>Quantity({{ticket.unitAbbreviation}})</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col item">
-        <input class="item-input" type="text"> </input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
+        <br/>
+        <input type="text"> </input>
+      </li>
+
+      <li class="item">
         <button on-tap="submitAssignment()" class="button button-balanced" style="width:100%;">Submit</button>
-      </div>
-    </div>
+      </li>
+
+    </ul>
+
+
   </ion-content>
 </ion-view>
