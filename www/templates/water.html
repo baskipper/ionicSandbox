@@ -1,31 +1,34 @@
 <ion-view view-title="Water Added">
-<ion-content>
-    <div class="row">
-      <div class="col">
-        <label>Water Added: </label>
-      </div>
-      <div class="col">
-        <label>{{waterAdded}} </label>
-      </div>
-      <div class="col">
-        <button on-tap="decreaseWater()" style="float:right;" class="button button-assertive">-</button>
-        <button on-tap="increaseWater()" style="float:right;" class="button button-positive">+</button>
-      </div>
-    </div>
-  <div class="row">
-    <div class="col">
-      <label>Driver Comments</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col item">
-      <input class="item-input" type="text" style="width:100%;"> </input>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <button on-tap="submitWater()" class="button button-balanced" style="width:100%;">Submit</button>
-    </div>
-  </div>
+  <ion-content>
+
+    <ul class="list">
+      <li class="item">
+        <div class="row">
+          <div class="col">
+            <span>Water Added: </span>
+          </div>
+          <div class="col">
+            <span>{{waterAdded}} </span>
+          </div>
+          <div class="col">
+            <button on-tap="increaseWater()" class="button button-positive">+</button>
+            <button on-tap="decreaseWater()" class="button button-assertive">-</button>
+          </div>
+        </div>
+
+      </li>
+
+      <li class="item">
+        <div class="row">
+          <span>Driver Comments</span>
+        </div>
+        <div class="row">
+          <input class="item-input" type="text" style="width:100%;"> </input>
+        </div>
+      </li>
+      <li class="item">
+        <button on-tap="submitWater()" class="button button-balanced" style="width:100%;">Submit</button>
+      </li>
+    </ul>
   </ion-content>
 </ion-view>
