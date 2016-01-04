@@ -85,8 +85,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ticket.services'])
     url: '/playlists',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/ticket.html',
+        controller: 'TicketCtrl'
       }
     }
   });

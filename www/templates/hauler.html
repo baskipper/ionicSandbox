@@ -2,16 +2,19 @@
   <ion-content>
 
     <ul class="list">
+
       <li class="item">
         <label>Date</label>
         <br/>
         <span>{{ticket.dispatchDate | date: 'M/d/yy'}}</span>
       </li>
+
       <li class="item">
         <label>Scheduled Load</label>
         <br/>
         <span>{{ticket.schedLoadDateTime | date: 'hh:mm a'}}</span>
       </li>
+
       <li class="item">
         <label class=>Scheduled Deliver</label>
         <br/>
@@ -34,7 +37,6 @@
         <label>Order</label>
         <br/>
         <span>{{ticket.orderID}}</span>
-
 
       <li class="item">
         <label>Truck</label>
@@ -103,9 +105,7 @@
       <li class="item">
         <button on-tap="submitAssignment()" class="button button-balanced" style="width:100%;">Submit</button>
       </li>
-
     </ul>
-
 
   </ion-content>
 </ion-view>

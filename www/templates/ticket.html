@@ -1,0 +1,129 @@
+<ion-view view-title="Ticket Information">
+  <ion-content>
+
+    <ul class="list">
+
+      <li class="item">
+        <label>Date</label>
+        <br/>
+        <span>{{ticket.order.date | date: "shortDate" : "UTC"}}</span>
+      </li>
+
+      <li class="item">
+        <label>Scheduled</label>
+        <br/>
+        <span>{{ticket.scheduledTime | date: "shortDate" : "UTC"}}</span>
+      </li>
+
+      <li class="item">
+        <label class=>Mix</label>
+        <br/>
+        <span>{{ticket.ticketLines[0].itemDesc | date: 'hh:mm a'}}</span>
+      </li>
+
+      <li class="item">
+        <label class=>Order Qty</label>
+        <br/>
+        <span>{{ticket.ticketLines[0].orderedQty}} {{ticket.ticketLines[0].orderedUOM}}</span>
+      </li>
+
+      <li class="item">
+        <label>Shipped Qty</label>
+        <br/>
+        <span>{{ticket.ticketLines[0].shippedQty}} {{ticket.ticketLines[0].shippedUOM}}</span>
+      </li>
+
+      <li class="item">
+        <label>Slump</label>
+        <br/>
+        <span>{{ticket.targetSlump || 'N/A'}}</span>
+      </li>
+
+      <li class="item">
+        <label>Truck</label>
+        <br/>
+        <span>{{ticket.truckCode}}</span>
+      </li>
+
+      <li class="item">
+        <label class=>Driver</label>
+        <br/>
+        <span>{{ticket.driver.name || 'N/A'}}</span>
+      </li>
+
+      <li class="item">
+        <label class=>Plant</label>
+        <br/>
+        <span>{{ticket.location.plantCode || 'N/A'}}</span>
+      </li>
+
+      <li class="item">
+        <label>Customer Information</label>
+        <br/>
+        <span>{{ticket.soldToCustomer.name}}</span>
+        <br/>
+        <span>{{ticket.soldToCustomer.address.city}}</span>
+        <br/>
+        <span>{{ticket.soldToCustomer.address.countrySubdivision}}
+          {{ticket.soldToCustomer.address.postalCode}}</span>
+      </li>
+
+      <li class="item">
+        <label>Delivery Information</label>
+        <br />
+        <span>{{ticket.shipToCustomer.name}}</span>
+        <br />
+        <span>{{ticket.shipToCustomer.address.lineOne}} {{ticket.shipToCustomer.address.lineTwo || " "}}</span>
+        <br />
+        <span>{{ticket.shipToCustomer.address.countrySubdivision}}
+          {{ticket.shipToCustomer.address.postalCode}}</span>
+      </li>
+
+      <li class="item">
+        <label>COD</label>
+        <br/>
+        <span>Amount: {{ticket.totalPrice + ticket.tax | currency}}</span>
+        <br/>
+        <span>Method:{{ticket.selectedPayment.type}}</span>
+        <br/>
+        <span>Collected:{{ticket.selectedPayment.amount | currency}}</span>
+      </li>
+
+      <li class="item">
+        <label class=>Load Time</label>
+        <br/>
+        <span>{{ticket.ticketTimes[0].value || "N/A"}}</span>
+
+      </li>
+      <li class="item">
+        <label>Left Plant</label>
+        <br/>
+        <span>{{ticket.ticketTimes[1].value || "N/A"}}</span>
+      </li>
+
+      <li class="item">
+        <label>Arrive At Job</label>
+        <br />
+        <span>{{ticket.ticketTimes[2].value || "N/A"}}</span>
+      </li>
+
+      <li class="item">
+        <label >Begin Unload</label>
+        <br/>
+        <span>{{ticket.ticketTimes[3].value || "N/A"}}</span>
+      </li>
+
+      <li class="item">
+        <label >Finish Unload</label>
+        <br/>
+        <span>{{ticket.ticketTimes[4].value || "N/A"}}</span>
+      </li>
+
+      <li class="item">
+        <button on-tap="submitTicket()" class="button button-balanced" style="width:100%;">Submit</button>
+      </li>
+
+    </ul>
+
+  </ion-content>
+</ion-view>

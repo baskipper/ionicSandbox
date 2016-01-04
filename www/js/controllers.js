@@ -200,7 +200,7 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('PlaylistCtrl', function ($scope, TicketService, $state, $stateParams) {
+  .controller('TicketCtrl', function ($scope, TicketService, $state, $stateParams) {
 
     $scope.submitTicket = function () {
       if (!TicketService.getTicketSubmitted()) {
