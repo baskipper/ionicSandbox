@@ -15,10 +15,10 @@
         <span>{{ticket.scheduledTime | date: "shortDate" : "UTC"}}</span>
       </li>
 
-      <li class="item">
+      <li class="item" on-hold="openModal();">
         <label class=>Mix</label>
         <br/>
-        <span>{{ticket.ticketLines[0].itemDesc | date: 'hh:mm a'}}</span>
+        <span>{{ticket.ticketLines[0].itemDesc}}</span>
       </li>
 
       <li class="item">

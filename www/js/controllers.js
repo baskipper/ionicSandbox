@@ -200,7 +200,50 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('TicketCtrl', function ($scope, TicketService, $state, $stateParams) {
+  .controller('ModalCtrl', function ($scope) {
+    $scope.listData = [
+      {time: '9:00 AM', event: 'Brunch with President'},
+      {time: '10:00AM', event: 'Suplex a Bear'},
+      {time: '12:00 Noon', event: 'Repair Warp Core'},
+      {time: '2:00 PM', event: 'Late Lunch(Foie Gras Stuffed Faberge Eggs)'}
+    ];
+
+    $scope.reorderItem = function (item, fromIndex, toIndex) {
+      $scope.listData.splice(fromIndex, 1);
+      $scope.listData.splice(toIndex, 0, item);
+    };
+
+    $scope.shouldShowDelete = false;
+    $scope.shouldShowReorder = false;
+    $scope.listCanSwipe = true;
+  })
+
+  .controller('TicketCtrl', function ($scope, TicketService, $state, $stateParams, $ionicModal) {
+
+    $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.modal = modal;
+    });
+    $scope.openModal = function () {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function () {
+      $scope.modal.hide();
+    };
+    $scope.$on('$destroy', function () {
+      $scope.modal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function () {
+      // Execute action
+    });
 
     $scope.submitTicket = function () {
       if (!TicketService.getTicketSubmitted()) {
@@ -354,6 +397,86 @@ angular.module('starter.controllers', [])
           "lifetimeYears": ""
         }
       }],
+      "constituents": [{
+        "itemCode": "2",
+        "itemDesc": "Cement (USA)",
+        "itemShortDesc": "",
+        "actualQty": 5175,
+        "actualUOM": "LBR",
+        "targetQty": 5170,
+        "targetUOM": "LBR",
+        "moisture": "   .500"
+      },
+        {
+          "itemCode": "10",
+          "itemDesc": "Sand (US Sand))",
+          "itemShortDesc": "",
+          "actualQty": 15220,
+          "actualUOM": "LBR",
+          "targetQty": 15204.7000000000007276,
+          "targetUOM": "LBR",
+          "moisture": "  1.500"
+        },
+        {
+          "itemCode": "26",
+          "itemDesc": "3/8\" Stone",
+          "itemShortDesc": "",
+          "actualQty": 7560,
+          "actualUOM": "LBR",
+          "targetQty": 7537.5000000000000000,
+          "targetUOM": "LBR",
+          "moisture": "   .500"
+        },
+        {
+          "itemCode": "27",
+          "itemDesc": "3/4\" Stone",
+          "itemShortDesc": "",
+          "actualQty": 10300,
+          "actualUOM": "LBR",
+          "targetQty": 10251,
+          "targetUOM": "LBR",
+          "moisture": "   .500"
+        },
+        {
+          "itemCode": "28",
+          "itemDesc": "1 1/4\" Aggregate 1",
+          "itemShortDesc": "",
+          "actualQty": 14920,
+          "actualUOM": "LBR",
+          "targetQty": 14874,
+          "targetUOM": "LBR",
+          "moisture": "   .500"
+        },
+        {
+          "itemCode": "40",
+          "itemDesc": "Water (US)",
+          "itemShortDesc": "",
+          "actualQty": 345,
+          "actualUOM": "GLL",
+          "targetQty": 345,
+          "targetUOM": "GLL",
+          "moisture": "   .000"
+        },
+        {
+          "itemCode": "50",
+          "itemDesc": "Air Entraining Agent (US) (dos)",
+          "itemShortDesc": "",
+          "actualQty": 30,
+          "actualUOM": "OZA",
+          "targetQty": 30,
+          "targetUOM": "OZA",
+          "moisture": "   .000"
+        },
+        {
+          "itemCode": "57",
+          "itemDesc": "Retarder 1",
+          "itemShortDesc": "",
+          "actualQty": 160,
+          "actualUOM": "OZA",
+          "targetQty": 155.0999999999999943,
+          "targetUOM": "OZA",
+          "moisture": "   .000"
+        }],
       "invoiceNumber": "",
       "poNumber": "",
       "orderQty": 20,
