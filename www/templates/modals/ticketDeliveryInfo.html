@@ -7,8 +7,24 @@
 
     <ion-list class="list">
       <ion-item>
-
+        {{ticket.shipToCustomer.name}}
       </ion-item>
+      <ion-item>
+        {{ticket.shipToCustomer.contactName}}
+      </ion-item>
+      <ion-item>
+        {{ticket.shipToCustomer.address.lineOne}} {{ticket.shipToCustomer.address.lineTwo || ''}}
+      </ion-item>
+      <ion-item>
+        {{ticket.shipToCustomer.address.city}} {{ticket.shipToCustomer.address.countrySubdivision}}
+        {{ticket.shipToCustomer.address.postalCode}}
+      </ion-item>
+      <ion-item>
+        <i class="ion-ios-telephone cai-icon"></i>
+        <span>{{ticket.shipToCustomer.contactPhone}}</span>
+        <i class="ion-location cai-icon"> Show Map</i>
+      </ion-item>
+
     </ion-list>
     <button class="button button-full  button-positive" ng-click="callModal();closeModal();">OK</button>
   </ion-content>
