@@ -7,27 +7,30 @@
 
     <ion-list class="list">
       <ion-item class="item">
-        <label>Truck Code</label>
-        <br/>
-        <span>{{ticket.truckCode}}</span>
+        <span>{{ticket.locationName}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.locationContact">
+        <span>{{ticket.locationContact}}</span>
       </ion-item>
 
       <ion-item class="item">
-        <label>License Number</label>
-        <br/>
-        <span>{{ticket.truck.licenseNumber || ''}}</span>
+
+        <span>{{ticket.locationAddress1}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.locationAddress2">
+        <span>{{ticket.locationAddress2}}</span>
       </ion-item>
 
       <ion-item class="item">
-        <label>Type</label>
-        <br/>
-        <span>{{ticket.truck.type}}</span>
+        <span>{{ticket.locationAddress3}}</span>
       </ion-item>
 
       <ion-item class="item">
-        <label>Seal ID</label>
-        <br/>
-        <span>{{ticket.truck.sealId}}</span>
+        <i class="ion-ios-telephone cai-icon"></i>
+        <span>{{ticket.locationPhone}}</span>
+        <i class="ion-location cai-icon"> Show Map</i>
       </ion-item>
 
     </ion-list>
