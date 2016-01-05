@@ -3,6 +3,10 @@ li > label {
   font-weight: bold;
 }
 
+.center {
+  margin: 0 auto;
+}
+
 input[type="text"] {
   border: 2px inset;
   width: 100%;

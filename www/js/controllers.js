@@ -15,7 +15,7 @@ angular.module('starter.controllers', [])
     // Create the login modal that we will use later
 
     $ionicModal.fromTemplateUrl('templates/login.html', {
-      id:'200adsf',
+      id: '200adsf',
       scope: $scope
     }).then(function (modal) {
       $scope.modal = modal;
@@ -63,23 +63,23 @@ angular.module('starter.controllers', [])
   })
 
   .controller('finalizeCtrl', function ($scope, TicketService, $state, $timeout) {
-    $scope.finalizeTicket = function(){
+    $scope.finalizeTicket = function () {
       TicketService.setTicketSubmitted(false);
       $state.go('ticket.waitView');
     };
   })
 
   .controller('waterCtrl', function ($scope, TicketService, $state, $timeout) {
-      $scope.waterAdded = 0;
-      $scope.increaseWater = function(){
-        $scope.waterAdded++;
-      };
-      $scope.decreaseWater = function(){
-        if ($scope.waterAdded != 0){
-          $scope.waterAdded--;
-        }
-      };
-    $scope.submitWater = function(){
+    $scope.waterAdded = 0;
+    $scope.increaseWater = function () {
+      $scope.waterAdded++;
+    };
+    $scope.decreaseWater = function () {
+      if ($scope.waterAdded != 0) {
+        $scope.waterAdded--;
+      }
+    };
+    $scope.submitWater = function () {
       $state.go('ticket.ticket')
     };
   })
@@ -223,55 +223,12 @@ angular.module('starter.controllers', [])
   .controller('TicketCtrl', function ($scope, TicketService, $state, $stateParams, $ionicModal) {
 
     $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
-      id: '1',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.mixInfoModal = modal;
-    });
-    $scope.openModal = function () {
-      $scope.mixInfoModal.show();
-    };
-    $scope.closeModal = function () {
-      $scope.mixInfoModal.hide();
-    };
-    $scope.$on('$destroy', function () {
-      $scope.mixInfoModal.remove();
-    });
-
-    // Execute action on hide modal
-    $scope.$on('mixInfoModal.hidden', function () {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('mixInfoModal.removed', function () {
-      // Execute action
-    });
-
-    $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
       id: 'mixInfo',
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
+      console.log('opening mix modal');
       $scope.mixInfoModal = modal;
-    });
-    $scope.openModal = function () {
-      $scope.mixInfoModal.show();
-    };
-    $scope.closeModal = function () {
-      $scope.mixInfoModal.hide();
-    };
-    $scope.$on('$destroy', function () {
-      $scope.mixInfoModal.remove();
-    });
-
-    // Execute action on hide modal
-    $scope.$on('mixInfoModal.hidden', function () {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('mixInfoModal.removed', function () {
-      // Execute action
     });
 
     $ionicModal.fromTemplateUrl('templates/modals/ticketDeliveryInfo.html', {
@@ -279,16 +236,42 @@ angular.module('starter.controllers', [])
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
+      console.log('opening delivery modal');
       $scope.deliveryInfoModal = modal;
     });
-    $scope.openModal = function () {
-      $scope.deliveryInfoModal.show();
+
+
+    $scope.openModal = function (modalName) {
+
+      switch (modalName) {
+        case 'mixInfo':
+          $scope.mixInfoModal.show();
+          break;
+        case 'deliveryInfo':
+          $scope.deliveryInfoModal.show();
+          break;
+        default:
+          break;
+      }
+
+
     };
     $scope.closeModal = function () {
+      $scope.mixInfoModal.hide();
       $scope.deliveryInfoModal.hide();
     };
     $scope.$on('$destroy', function () {
+      $scope.mixInfoModal.remove();
       $scope.deliveryInfoModal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('mixInfoModal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('mixInfoModal.removed', function () {
+      // Execute action
     });
 
     // Execute action on hide modal
@@ -305,8 +288,7 @@ angular.module('starter.controllers', [])
         TicketService.setTicketSubmitted(true);
         $state.go('ticket.water');
       }
-      else
-      {
+      else {
 
         $state.go('ticket.finalize');
       }

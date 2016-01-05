@@ -15,7 +15,7 @@
         <span>{{ticket.scheduledTime | date: "shortDate" : "UTC"}}</span>
       </li>
 
-      <li class="item" on-hold="openModal(mixInfo);">
+      <li class="item" on-hold="openModal('mixInfo');">
         <label class=>Mix</label>
         <br/>
         <span>
@@ -75,7 +75,7 @@
           {{ticket.soldToCustomer.address.postalCode}}</span>
       </li>
 
-      <li class="item" on-hold="openModal(deliveryInfo);">
+      <li class="item" on-hold="openModal('deliveryInfo');">
         <label>Delivery Information</label>
         <br/>
         <span>{{ticket.shipToCustomer.name}}</span>
