@@ -95,14 +95,19 @@
           </span>
       </li>
 
-      <li class="item">
+      <li class="item" on-hold="openModal('codInfo');">
         <label>COD</label>
         <br/>
         <span>Amount: {{ticket.totalPrice + ticket.tax | currency}}</span>
         <br/>
         <span>Method:{{ticket.selectedPayment.type}}</span>
         <br/>
-        <span>Collected:{{ticket.selectedPayment.amount | currency}}</span>
+        <span>Collected:{{ticket.selectedPayment.amount | currency}}
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </span>
       </li>
 
       <li class="item">

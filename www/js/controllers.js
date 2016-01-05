@@ -246,6 +246,14 @@ angular.module('starter.controllers', [])
       $scope.truckInfoModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl('templates/modals/codInfo.html', {
+      id: 'codInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.codInfoModal = modal;
+    });
+
 
     $scope.openModal = function (modalName) {
 
@@ -259,7 +267,11 @@ angular.module('starter.controllers', [])
         case 'truckInfo':
           $scope.truckInfoModal.show();
           break;
+        case 'codInfo':
+          $scope.codInfoModal.show();
+          break;
         default:
+
           break;
       }
     };
@@ -268,12 +280,14 @@ angular.module('starter.controllers', [])
       $scope.mixInfoModal.hide();
       $scope.deliveryInfoModal.hide();
       $scope.truckInfoModal.hide();
+      $scope.codInfoModal.hide();
     };
 
     $scope.$on('$destroy', function () {
       $scope.mixInfoModal.remove();
       $scope.deliveryInfoModal.remove();
       $scope.truckInfoModal.remove();
+      $scope.codInfoModal.remove();
     });
 
     // Execute action on hide modal
