@@ -6,10 +6,10 @@
   <ion-content>
 
     <ion-list class="list">
-      <ion-item id="paymentInfo" class="item">
+      <ion-item class="item">
         <div class="row">
-          <div class="col-30">
-            <select style="height:5.3vh; border-color: #3cdaff; background: #00add5; color:#fff;">
+          <div class="">
+            <select style="height:34px; border-color: #3cdaff; background: #00add5; color:#fff;">
               <option>Account</option>
               <option>Cash</option>
               <option>Check</option>
@@ -17,29 +17,18 @@
               <option>Debit Card</option>
             </select>
           </div>
-          <div class="col-60">
+          <div id="paymentAmount" class="">
             <input type="number" placeholder="{{(ticket.totalPrice + ticket.tax) | currency}}">
           </div>
         </div>
       </ion-item>
 
       <ion-item class="item">
-        <label>License Number</label>
-        <br/>
-        <span>{{ticket.truck.licenseNumber || ''}}</span>
+        <div class="row">
+        <input type="text" placeholder="Additional Information">
+        </div>
       </ion-item>
 
-      <ion-item class="item">
-        <label>Type</label>
-        <br/>
-        <span>{{ticket.truck.type}}</span>
-      </ion-item>
-
-      <ion-item class="item">
-        <label>Seal ID</label>
-        <br/>
-        <span>{{ticket.truck.sealId}}</span>
-      </ion-item>
 
     </ion-list>
     <button class="button button-full  button-positive" ng-click="closeModal();">OK</button>
