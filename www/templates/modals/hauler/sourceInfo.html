@@ -7,27 +7,67 @@
 
     <ion-list class="list">
       <ion-item class="item">
-        <label>Truck Code</label>
-        <br/>
-        <span>{{ticket.truckCode}}</span>
+        <span>{{ticket.customerName}}</span>
       </ion-item>
 
       <ion-item class="item">
-        <label>License Number</label>
-        <br/>
-        <span>{{ticket.truck.licenseNumber || ''}}</span>
+        <span>{{ticket.address1}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.locationAddress2">
+        <span>{{ticket.address2}}</span>
       </ion-item>
 
       <ion-item class="item">
-        <label>Type</label>
-        <br/>
-        <span>{{ticket.truck.type}}</span>
+        <span>{{ticket.address3}}</span>
       </ion-item>
 
       <ion-item class="item">
-        <label>Seal ID</label>
+        <i class="ion-ios-telephone cai-icon"></i>
+        <span>{{ticket.phone}}</span>
+        <i class="ion-location cai-icon"> Show Map</i>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.dayMon">
+        <label>Monday:</label>
         <br/>
-        <span>{{ticket.truck.sealId}}</span>
+        <span>{{ticket.startTime | date:'shortTime'}} - {{ticket.stopTime | date:'shortTime'}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.dayTue">
+        <label>Tuesday:</label>
+        <br/>
+        <span>{{ticket.startTime | date:'shortTime'}} - {{ticket.stopTime | date:'shortTime'}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.dayWed">
+        <label>Wednesday:</label>
+        <br/>
+        <span>{{ticket.startTime | date:'shortTime'}} - {{ticket.stopTime | date:'shortTime'}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.dayThu">
+        <label>Thursday:</label>
+        <br/>
+        <span>{{ticket.startTime | date:'shortTime'}} - {{ticket.stopTime | date:'shortTime'}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.dayFri">
+        <label>Friday:</label>
+        <br/>
+        <span>{{ticket.startTime | date:'shortTime'}} - {{ticket.stopTime | date:'shortTime'}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.daySat">
+        <label>Saturday:</label>
+        <br/>
+        <span>{{ticket.startTime | date:'shortTime'}} - {{ticket.stopTime | date:'shortTime'}}</span>
+      </ion-item>
+
+      <ion-item class="item" ng-if="ticket.daySun">
+        <label>Sunday:</label>
+        <br/>
+        <span>{{ticket.startTime | date:'shortTime'}} - {{ticket.stopTime | date:'shortTime'}}</span>
       </ion-item>
 
     </ion-list>
