@@ -1,4 +1,11 @@
 
+#paymentInfo > input::-webkit-outer-spin-button,
+#paymentInfo > input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 li > label {
   font-weight: bold;
 }
@@ -8,6 +15,11 @@ li > label {
 }
 
 input[type="text"] {
+  border: 2px inset;
+  width: 100%;
+}
+
+input[type="number"] {
   border: 2px inset;
   width: 100%;
 }
