@@ -21,22 +21,31 @@
 
       </li>
 
-      <li class="item">
-        <label>Terms and Conditions</label>
-
+      <li class="item" on-hold="openModal('termsInfo')">
+        <label>Terms and Conditions
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </label>
       </li>
 
-      <li class="item">
-        <label>Warnings and Cautions</label>
+      <li class="item" on-hold="openModal('warningsInfo')">
+        <label>Warnings and Cautions
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span></label>
       </li>
 
-      <li class="item">
-        <label>Customer Comments</label>
-      </li>
-
-      <li class="item">
+      <li class="item" on-hold="openModal('propertyInfo')">
         <ion-list>
-          <ion-checkbox>Property Damage</ion-checkbox>
+          <ion-checkbox>Property Damage
+            <span class="triangle-container">
+              <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+              </span>
+          </span>
+          </ion-checkbox>
           <ion-checkbox>Water Release</ion-checkbox>
           <ion-checkbox>Driver Acceptance</ion-checkbox>
 

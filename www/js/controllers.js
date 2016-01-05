@@ -62,7 +62,80 @@ angular.module('starter.controllers', [])
     }, 5000)
   })
 
-  .controller('finalizeCtrl', function ($scope, TicketService, $state, $timeout) {
+  .controller('finalizeCtrl', function ($scope, TicketService, $state, $timeout, $ionicModal) {
+
+    $ionicModal.fromTemplateUrl('templates/modals/propertyInfo.html', {
+      id: 'propertyInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.propertyInfoModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl('templates/modals/termsInfo.html', {
+      id: 'termsInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.termsInfoModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl('templates/modals/warningsInfo.html', {
+      id: 'warningsInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.warningsInfoModal = modal;
+    });
+
+    $scope.openModal = function (modalName) {
+
+      switch (modalName) {
+        case 'propertyInfo':
+          $scope.propertyInfoModal.show();
+          break;
+        case 'termsInfo':
+          $scope.termsInfoModal.show();
+          break;
+        case 'warningsInfo':
+          $scope.warningsInfoModal.show();
+          break;
+        default:
+
+          break;
+      }
+    };
+
+    $scope.closeModal = function () {
+      $scope.propertyInfoModal.hide();
+      $scope.termsInfoModal.hide();
+      $scope.warningsInfoModal.hide();
+    };
+
+    $scope.$on('$destroy', function () {
+      $scope.propertyInfoModal.remove();
+      $scope.termsInfoModal.remove();
+      $scope.warningsInfoModal.remove();
+
+    });
+
+    // Execute action on hide modal
+    $scope.$on('mixInfoModal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('mixInfoModal.removed', function () {
+      // Execute action
+    });
+
+    // Execute action on hide modal
+    $scope.$on('deliveryInfoModal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('deliveryInfoModal.removed', function () {
+      // Execute action
+    });
     $scope.finalizeTicket = function () {
       TicketService.setTicketSubmitted(false);
       $state.go('ticket.waitView');
