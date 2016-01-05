@@ -56,24 +56,34 @@
         <span class=>{{ticket.locationID || 'N/A'}}</span>
       </li>
 
-      <li class="item">
+      <li class="item" on-hold="openModal('sourceInfo');">
         <label>Source Information</label>
         <br/>
         <span>{{ticket.customerName}}</span>
         <br/>
         <span>{{ticket.address1}}</span>
         <br/>
-        <span>{{ticket.address3}}</span>
+        <span>{{ticket.address3}}
+                  <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </span>
       </li>
 
-      <li class="item">
+      <li class="item" on-hold="openModal('deliveryInfo');">
         <label>Delivery Information</label>
         <br/>
         <span>{{ticket.locationName}}</span>
         <br/>
         <span>{{ticket.locationAddress1}}</span>
         <br/>
-        <span>{{ticket.locationAddress3}}</span>
+        <span>{{ticket.locationAddress3}}
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </span>
       </li>
 
       <li class="item">

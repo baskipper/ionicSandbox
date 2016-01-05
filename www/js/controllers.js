@@ -157,7 +157,68 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('haulerCtrl', function ($scope, TicketService, $state, $timeout) {
+  .controller('haulerCtrl', function ($scope, TicketService, $state, $timeout, $ionicModal) {
+
+
+
+    $ionicModal.fromTemplateUrl('templates/modals/hauler/deliveryInfo.html', {
+      id: 'deliveryInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.deliveryInfoModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl('templates/modals/hauler/sourceInfo.html', {
+      id: 'sourceInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.sourceInfoModal = modal;
+    });
+
+    $scope.openModal = function (modalName) {
+
+      switch (modalName) {
+        case 'sourceInfo':
+          $scope.sourceInfoModal.show();
+          break;
+        case 'deliveryInfo':
+          $scope.deliveryInfoModal.show();
+          break;
+        default:
+          break;
+      }
+    };
+
+    $scope.closeModal = function () {
+      $scope.sourceInfoModal.hide();
+      $scope.deliveryInfoModal.hide();
+    };
+
+    $scope.$on('$destroy', function () {
+      $scope.sourceInfoModal.remove();
+      $scope.deliveryInfoModal.remove();
+    });
+
+    // Execute action on hide modal
+    $scope.$on('mixInfoModal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('mixInfoModal.removed', function () {
+      // Execute action
+    });
+
+    // Execute action on hide modal
+    $scope.$on('deliveryInfoModal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('deliveryInfoModal.removed', function () {
+      // Execute action
+    });
+
     $scope.ticket = {
 
       "address1": "8085 Bell Road",
