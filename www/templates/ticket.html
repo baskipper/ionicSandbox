@@ -46,10 +46,15 @@
         <span>{{ticket.targetSlump || 'N/A'}}</span>
       </li>
 
-      <li class="item">
+      <li class="item" on-hold="openModal('truckInfo');">
         <label>Truck</label>
         <br/>
-        <span>{{ticket.truckCode}}</span>
+        <span>{{ticket.truckCode}}
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </span>
       </li>
 
       <li class="item">

@@ -227,7 +227,6 @@ angular.module('starter.controllers', [])
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
-      console.log('opening mix modal');
       $scope.mixInfoModal = modal;
     });
 
@@ -236,8 +235,15 @@ angular.module('starter.controllers', [])
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
-      console.log('opening delivery modal');
       $scope.deliveryInfoModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl('templates/modals/truckInfo.html', {
+      id: 'truckInfo',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.truckInfoModal = modal;
     });
 
 
@@ -250,19 +256,24 @@ angular.module('starter.controllers', [])
         case 'deliveryInfo':
           $scope.deliveryInfoModal.show();
           break;
+        case 'truckInfo':
+          $scope.truckInfoModal.show();
+          break;
         default:
           break;
       }
-
-
     };
+
     $scope.closeModal = function () {
       $scope.mixInfoModal.hide();
       $scope.deliveryInfoModal.hide();
+      $scope.truckInfoModal.hide();
     };
+
     $scope.$on('$destroy', function () {
       $scope.mixInfoModal.remove();
       $scope.deliveryInfoModal.remove();
+      $scope.truckInfoModal.remove();
     });
 
     // Execute action on hide modal
