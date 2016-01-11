@@ -64,6 +64,19 @@ angular.module('starter.controllers', [])
 
   .controller('finalizeCtrl', function ($scope, TicketService, $state, $timeout, $ionicModal) {
 
+    var canvas = document.getElementById('signatureCanvas');
+    var signaturePad = new SignaturePad(canvas);
+
+    $scope.clearCanvas = function() {
+      signaturePad.clear();
+    };
+
+    $scope.saveCanvas = function() {
+      var sigImg = signaturePad.toDataURL();
+      $scope.signature = sigImg;
+    };
+
+
     $ionicModal.fromTemplateUrl('templates/modals/propertyInfo.html', {
       id: 'propertyInfo',
       scope: $scope,
