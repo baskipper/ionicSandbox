@@ -1,19 +1,27 @@
 <ion-view view-title="Truck Code">
   <ion-content class="padding">
 
-    <div class="row" style="text-align:center; font-size:large;">
-      <div class="col-50 col-offset-20">
-        Enter Truck Code
+    <div class="center">
+      <div class="row" style="text-align:center; font-size:large; font-weight:500;">
+        <div class="col-50 col-offset-20">
+          Enter Truck Code
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-50 center">
-        <input ng-model="truckCode" class="item item-input" style="border:1px solid black; width:87%;" type="text">
+      <div class="row">
+        <div class="col">
+
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-50 center">
-        <button on-tap="setTruckCode(truckCode)" class="button button-calm" style="width: 87%;">Save</button>
+      <div class="row">
+        <div class="col" style="padding:0;">
+          <input ng-model="truckCode" class="item item-input" style="border:1px solid black; " type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col" style="padding:0;">
+          <button on-tap="setTruckCode(truckCode)" class="button button-calm" style="width:100%; padding:0;">Save</button>
+        </div>
       </div>
     </div>
   </ion-content>
