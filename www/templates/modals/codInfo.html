@@ -9,7 +9,7 @@
       <ion-item class="item">
         <div class="row">
           <div class="">
-            <select style="height:34px; border-color: #3cdaff; background: #00add5; color:#fff;">
+            <select ng-model="ticket.selectedPayment.type" style="height:34px; border-color: #3cdaff; background: #00add5; color:#fff;">
               <option>Account</option>
               <option>Cash</option>
               <option>Check</option>
@@ -18,7 +18,7 @@
             </select>
           </div>
           <div id="paymentAmount" class="">
-            <input type="number" placeholder="{{(ticket.totalPrice + ticket.tax) | currency}}">
+            <input ng-model="ticket.selectedPayment.amount" type="number" placeholder="{{(ticket.totalPrice + ticket.tax) | currency}}">
           </div>
         </div>
       </ion-item>

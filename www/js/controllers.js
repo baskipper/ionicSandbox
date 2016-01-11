@@ -356,6 +356,14 @@ angular.module('starter.controllers', [])
 
   .controller('TicketCtrl', function ($scope, TicketService, $state, $stateParams, $ionicModal) {
 
+
+    {
+    $scope.openTimeModal = function (selectedTime) {
+      $scope.selectedTime = selectedTime;
+      console.log($scope.selectedTime);
+      $scope.openModal('overrideTime');
+    };
+
     $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
       id: 'mixInfo',
       scope: $scope,
@@ -388,6 +396,13 @@ angular.module('starter.controllers', [])
       $scope.codInfoModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl('templates/modals/overrideTime.html', {
+      id: 'overrideTime',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.overrideTimeModal = modal;
+    });
 
     $scope.openModal = function (modalName) {
 
@@ -404,8 +419,9 @@ angular.module('starter.controllers', [])
         case 'codInfo':
           $scope.codInfoModal.show();
           break;
+        case 'overrideTime':
+          $scope.overrideTimeModal.show();
         default:
-
           break;
       }
     };
@@ -415,6 +431,7 @@ angular.module('starter.controllers', [])
       $scope.deliveryInfoModal.hide();
       $scope.truckInfoModal.hide();
       $scope.codInfoModal.hide();
+      $scope.overrideTimeModal.hide();
     };
 
     $scope.$on('$destroy', function () {
@@ -422,6 +439,7 @@ angular.module('starter.controllers', [])
       $scope.deliveryInfoModal.remove();
       $scope.truckInfoModal.remove();
       $scope.codInfoModal.remove();
+      $scope.overrideTimeModal.remove();
     });
 
     // Execute action on hide modal
@@ -441,6 +459,7 @@ angular.module('starter.controllers', [])
     $scope.$on('deliveryInfoModal.removed', function () {
       // Execute action
     });
+  }
 
     $scope.submitTicket = function () {
       if (!TicketService.getTicketSubmitted()) {
@@ -452,6 +471,7 @@ angular.module('starter.controllers', [])
         $state.go('ticket.finalize');
       }
     };
+
     $scope.ticket = {
       "truckCode": TicketService.getTruckCode(),
       "ticketEmail": ["test@someemail.com"],
