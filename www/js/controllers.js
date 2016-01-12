@@ -67,11 +67,11 @@ angular.module('starter.controllers', [])
     var canvas = document.getElementById('signatureCanvas');
     var signaturePad = new SignaturePad(canvas);
 
-    $scope.clearCanvas = function() {
+    $scope.clearCanvas = function () {
       signaturePad.clear();
     };
 
-    $scope.saveCanvas = function() {
+    $scope.saveCanvas = function () {
       var sigImg = signaturePad.toDataURL();
       $scope.signature = sigImg;
     };
@@ -101,6 +101,7 @@ angular.module('starter.controllers', [])
       $scope.warningsInfoModal = modal;
     });
 
+    {
     $scope.openModal = function (modalName) {
 
       switch (modalName) {
@@ -149,10 +150,13 @@ angular.module('starter.controllers', [])
     $scope.$on('deliveryInfoModal.removed', function () {
       // Execute action
     });
+  }
+
     $scope.finalizeTicket = function () {
       TicketService.setTicketSubmitted(false);
       $state.go('ticket.waitView');
     };
+
   })
 
   .controller('waterCtrl', function ($scope, TicketService, $state, $timeout) {
@@ -170,8 +174,9 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('haulerCtrl', function ($scope, TicketService, $state, $timeout, $ionicModal) {
+  .controller('haulerCtrl', function ($scope, TicketService, $state, $timeout, $ionicModal, $ionicHistory) {
 
+    $ionicHistory.clearCache();
 
 
     $ionicModal.fromTemplateUrl('templates/modals/hauler/deliveryInfo.html', {
@@ -498,7 +503,8 @@ angular.module('starter.controllers', [])
   }
 
     $scope.submitTicket = function () {
-      if (!TicketService.getTicketSubmitted()) {
+      var ticketSubmitted = TicketService.getTicketSubmitted();
+      if (!ticketSubmitted || ticketSubmitted == "false") {
         TicketService.setTicketSubmitted(true);
         $state.go('ticket.water');
       }

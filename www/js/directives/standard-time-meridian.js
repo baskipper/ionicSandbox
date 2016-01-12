@@ -7,7 +7,7 @@ angular.module('starter.directives', [])
     scope: {
       etime: '=etime'
     },
-    template: "<strong>{{stime}}</strong>",
+    template: "<span>{{stime}}</span>",
     link: function(scope, elem, attrs) {
 
       scope.stime = epochParser(scope.etime, 'time');
