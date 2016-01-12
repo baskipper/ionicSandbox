@@ -4,7 +4,12 @@
 
   </ion-header-bar>
   <ion-content>
+    <ionic-timepicker input-obj="timePickerObject">
 
+        <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+
+    </ionic-timepicker>
+</div>
 
     <button class="button button-full  button-positive" ng-click="closeModal();">OK</button>
   </ion-content>

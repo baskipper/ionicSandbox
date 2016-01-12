@@ -110,34 +110,54 @@
         </span>
       </li>
 
-      <li class="item" on-hold="openTimeModal('Load Time')">
+      <li class="item">
         <label class=>Load Time</label>
         <br/>
-        <span>{{ticket.ticketTimes[0].value || "N/A"}}</span>
+        <ionic-timepicker input-obj="timePickerObject">
+
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+
+        </ionic-timepicker>
 
       </li>
       <li class="item">
         <label>Left Plant</label>
         <br/>
-        <span>{{ticket.ticketTimes[1].value || "N/A"}}</span>
+        <ionic-timepicker input-obj="timePickerObject">
+
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+
+        </ionic-timepicker>
       </li>
 
       <li class="item">
         <label>Arrive At Job</label>
         <br/>
-        <span>{{ticket.ticketTimes[2].value || "N/A"}}</span>
+        <ionic-timepicker input-obj="timePickerObject">
+
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+
+        </ionic-timepicker>
       </li>
 
       <li class="item">
         <label>Begin Unload</label>
         <br/>
-        <span>{{ticket.ticketTimes[3].value || "N/A"}}</span>
+        <ionic-timepicker input-obj="timePickerObject">
+
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+
+        </ionic-timepicker>
       </li>
 
       <li class="item">
         <label>Finish Unload</label>
         <br/>
-        <span>{{ticket.ticketTimes[4].value || "N/A"}}</span>
+        <ionic-timepicker input-obj="timePickerObject">
+
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+
+        </ionic-timepicker>
       </li>
 
       <li class="item">
