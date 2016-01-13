@@ -1,4 +1,22 @@
 
+
+#ticketInfo label
+{
+  font-weight:bold;
+}
+
+#ticketInfo hr
+{
+  border: 1px solid #00add5;
+}
+
+#ticketInfo h4
+{
+  color: #00add5;
+  font-family: TitilliumWebBold, sans-serif;
+  text-transform: capitalize;
+}
+
 #paymentAmount > input::-webkit-outer-spin-button,
 #paymentAmount > input::-webkit-inner-spin-button {
   -webkit-appearance: none;

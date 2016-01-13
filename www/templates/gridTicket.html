@@ -1,0 +1,242 @@
+<ion-view view-title="Ticket Information">
+  <ion-content>
+    <div id="ticketInfo">
+      <div class="row">
+        <div class="col">
+          <label>
+            Date
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Scheduled
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Mix
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Order Qty
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Shipped Qty
+          </label>
+        </div>
+
+      </div>
+
+      <hr/>
+
+      <div class="row">
+        <div class="col">
+
+          <span>{{ticket.order.date | date: "shortDate" : "UTC"}}</span>
+
+        </div>
+
+        <div class="col">
+
+          <span>{{ticket.scheduledTime | date: "shortDate" : "UTC"}}</span>
+
+        </div>
+
+        <div class="col">
+        <span>
+          {{ticket.ticketLines[0].itemDesc}}
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.ticketLines[0].orderedQty}} {{ticket.ticketLines[0].orderedUOM}}</span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.ticketLines[0].shippedQty}} {{ticket.ticketLines[0].shippedUOM}}</span>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <label>
+            Slump
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Truck
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Driver
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Plant
+          </label>
+        </div>
+
+        <div class="col">
+          <label>
+            Ticket Number
+          </label>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+
+          <span>{{ticket.targetSlump || 'N/A'}}</span>
+
+        </div>
+
+        <div class="col">
+        <span>{{ticket.truckCode}}
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.driver.name || 'N/A'}}</span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.location.plantCode || 'N/A'}}</span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.ticketNumber}}</span>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h4>Customer Information</h4>
+        </div>
+        <div class="col">
+          <h4>Delivery Information</h4>
+        </div>
+        <div class="col">
+          <h4>COD</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <span>{{ticket.soldToCustomer.name}}</span>
+          <br/>
+          <span>{{ticket.soldToCustomer.address.city}}</span>
+          <br/>
+        <span>{{ticket.soldToCustomer.address.countrySubdivision}}
+          {{ticket.soldToCustomer.address.postalCode}}</span>
+        </div>
+        <div class="col">
+          <span>{{ticket.shipToCustomer.name}}</span>
+          <br/>
+          <span>{{ticket.shipToCustomer.address.lineOne}} {{ticket.shipToCustomer.address.lineTwo || " "}}</span>
+          <br/>
+        <span>{{ticket.shipToCustomer.address.countrySubdivision}}
+          {{ticket.shipToCustomer.address.postalCode}}</span>
+         <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </div>
+        <div class="col">
+          <span>Amount: {{ticket.totalPrice + ticket.tax | currency}}</span>
+          <br/>
+          <span>Method:{{ticket.selectedPayment.type}}</span>
+          <br/>
+        <span>Collected:{{ticket.selectedPayment.amount | currency}}
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+        </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class=>Load Time</label>
+        </div>
+        <div class="col">
+          <label class=>Left Plant</label>
+        </div>
+        <div class="col">
+          <label class=>Arrive At Job</label>
+        </div>
+        <div class="col">
+          <label class=>Begin Unload</label>
+        </div>
+        <div class="col">
+          <label class=>Finish Unload</label>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col">
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+        </div>
+        <div class="col">
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+        </div>
+        <div class="col">
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+        </div>
+        <div class="col">
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+        </div>
+        <div class="col">
+          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+        </div>
+      </div>
+
+      <button on-tap="submitTicket()" class="button button-balanced" style="width:100%;">Submit</button>
+    </div>
+  </ion-content>
+</ion-view>

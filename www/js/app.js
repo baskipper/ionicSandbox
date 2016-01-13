@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
     url: '/info',
     views: {
       'menuContent': {
-        templateUrl: 'templates/ticket.html',
+        templateUrl: 'templates/gridTicket.html',
         controller: 'TicketCtrl'
       }
     }
