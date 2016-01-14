@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
   .state('ticket.waitView', {
     url: '/wait',
     views: {
-      'waitView': {
+      'menuContent': {
         templateUrl: 'templates/wait.html',
         controller: 'waitCtrl'
       }
@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
   .state('ticket.hauler', {
       url: '/hauler',
       views: {
-        'hauler': {
+        'menuContent': {
           templateUrl: 'templates/hauler.html',
           controller: 'haulerCtrl'
         }
@@ -54,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
     .state('ticket.truckCode', {
       url: '/truckCode',
       views: {
-        'truckCode': {
+        'menuContent': {
           templateUrl: 'templates/truckCode.html',
           controller: 'truckCodeCtrl'
         }
@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
     .state('ticket.water', {
       url: '/water',
       views: {
-        'waterAdded': {
+        'menuContent': {
           templateUrl: 'templates/water.html',
           controller: 'waterCtrl'
         }
@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
     .state('ticket.finalize', {
       url: '/finalize',
       views: {
-        'finalize': {
+        'menuContent': {
           templateUrl: 'templates/finalize.html',
           controller: 'finalizeCtrl'
         }
@@ -84,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
   .state('ticket.ticket', {
     url: '/info',
     views: {
-      'ticketInfo': {
+      'menuContent': {
         templateUrl: 'templates/gridTicket.html',
         controller: 'TicketCtrl'
       }
