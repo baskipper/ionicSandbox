@@ -1,36 +1,71 @@
-<ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class=" tabs-dark tabs-color-active-positive">
 
-      <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
+  <ion-tab hidden="true">
+    <ion-nav-view name="truckCode">
 
-  <ion-side-menu side="right">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Right</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
-</ion-side-menus>
+    </ion-nav-view>
+  </ion-tab>
+
+  <ion-tab hidden="true">
+    <ion-nav-view name="waitView">
+
+    </ion-nav-view>
+  </ion-tab>
+
+
+  <ion-tab hidden="true">
+    <ion-nav-view name="hauler">
+
+    </ion-nav-view>
+  </ion-tab>
+
+
+  <ion-tab hidden="true">
+    <ion-nav-view name="waterAdded">
+
+    </ion-nav-view>
+  </ion-tab>
+
+
+  <ion-tab hidden="true">
+    <ion-nav-view name="finalize">
+
+    </ion-nav-view>
+  </ion-tab>
+
+
+  <ion-tab hidden="true">
+    <ion-nav-view name="ticketInfo">
+
+    </ion-nav-view>
+  </ion-tab>
+
+
+  <!-- Dashboard Tab -->
+  <ion-tab  title="Status" icon-off="ion-gear-b" icon-on="ion-gear-b" ng-click="show();">
+    <ion-nav-view ></ion-nav-view>
+  </ion-tab>
+
+  <!-- Chats Tab -->
+  <ion-tab title="Chats" icon-off="ion-information" icon-on="ion-information" href="#/tab/chats">
+    <ion-nav-view ></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="Account" icon-off="ion-pricetags" icon-on="ion-pricetags" href="#/tab/account">
+    <ion-nav-view ></ion-nav-view>
+  </ion-tab>
+
+  <div>
+    <!-- Account Tab -->
+    <ion-tab title="Actions" icon-off="ion-edit" icon-on="ion-edit" ng-click="show()">
+      <ion-nav-view></ion-nav-view>
+    </ion-tab>
+  </div>
+
+</ion-tabs>

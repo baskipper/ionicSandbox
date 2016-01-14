@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicActionSheet) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -9,38 +9,33 @@ angular.module('starter.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
-    // Form data for the login modal
-    $scope.loginData = {};
+    $scope.show = function () {
 
-    // Create the login modal that we will use later
+      var hideSheet = $ionicActionSheet.show({
+        buttons: [
+          {text: 'About'},
+          {text: 'Get Assignment'},
+          {text: 'Get Ticket'},
+          {text: 'Pending Tickets'},
+          {text: 'Driver Acceptance'},
+          {text: 'Exit Acceptance View'},
+          {text: 'Admin'},
+          {text: 'Change Password'},
+          {text: 'Log out'}
+        ],
+        titleText: 'Options',
+        cancelText: 'Never Mind',
+        cancel: function(){
 
-    $ionicModal.fromTemplateUrl('templates/login.html', {
-      id: '200adsf',
-      scope: $scope
-    }).then(function (modal) {
-      $scope.modal = modal;
-    });
+        },
+        buttonClicked: function(index, buttonIn){
+          console.log('You clicked ' + buttonIn.text);
+          return true;
+        }
+      })
+    }
 
-    // Triggered in the login modal to close it
-    $scope.closeLogin = function () {
-      $scope.modal.hide();
-    };
 
-    // Open the login modal
-    $scope.login = function () {
-      $scope.modal.show();
-    };
-
-    // Perform the login action when the user submits the login form
-    $scope.doLogin = function () {
-      console.log('Doing login', $scope.loginData);
-
-      // Simulate a login delay. Remove this and replace with your login
-      // code if using a login system
-      $timeout(function () {
-        $scope.closeLogin();
-      }, 1000);
-    };
   })
 
   .controller('truckCodeCtrl', function ($scope, TicketService, $state) {

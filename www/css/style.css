@@ -1,5 +1,10 @@
 
 
+
+ion-tabs.tabs-color-active-positive .tab-item {
+  color: white;
+}
+
 #ticketInfo label
 {
   font-weight:bold;
