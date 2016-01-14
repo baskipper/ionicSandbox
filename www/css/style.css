@@ -5,17 +5,17 @@ ion-tabs.tabs-color-active-positive .tab-item {
   color: white;
 }
 
-#ticketInfo label
+#ticketInfo label, #haulerInfo label
 {
   font-weight:bold;
 }
 
-#ticketInfo hr
+#ticketInfo hr, #haulerInfo hr
 {
   border: 1px solid #00add5;
 }
 
-#ticketInfo h4
+#ticketInfo h4, #haulerInfo h4
 {
   color: #00add5;
   font-family: TitilliumWebBold, sans-serif;

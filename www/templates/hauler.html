@@ -1,98 +1,148 @@
 <ion-view view-title="Assignment Information">
   <ion-content>
 
-    <ul class="list">
+    <div id="haulerInfo">
+      <div class="row">
+        <div class="col">
+          <label>Date</label>
+        </div>
+        <div class="col">
+          <label>Scheduled Load</label>
+        </div>
+        <div class="col">
+          <label>Scheduled Deliver</label>
+        </div>
+        <div class="col">
+          <label>Product</label>
+        </div>
+        <div class="col">
 
-      <li class="item">
-        <label>Date</label>
-        <br/>
-        <span>{{ticket.dispatchDate | date: 'M/d/yy'}}</span>
-      </li>
+        </div>
 
-      <li class="item">
-        <label>Scheduled Load</label>
-        <br/>
-        <span>{{ticket.schedLoadDateTime | date: 'hh:mm a'}}</span>
-      </li>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <span>{{ticket.dispatchDate | date: 'M/d/yy'}}</span>
+        </div>
+        <div class="col">
+          <span>{{ticket.schedLoadDateTime | date: 'hh:mm a'}}</span>
+        </div>
+        <div class="col">
+          <span>{{ticket.schedDeliverDateTime | date: 'hh:mm a'}}</span>
+        </div>
+        <div class="col">
+          <span>{{ticket.productDescription}}</span>
+        </div>
+        <div class="col">
 
-      <li class="item">
-        <label class=>Scheduled Deliver</label>
-        <br/>
-        <span class=>{{ticket.schedDeliverDateTime | date: 'hh:mm a'}}</span>
-      </li>
+        </div>
+      </div>
 
-      <li class="item">
-        <label>Product</label>
-        <br/>
-        <span class=>{{ticket.productDescription}}</span>
-      </li>
+      <br/>
+      <div class="row">
 
-      <li class="item">
-        <label>Dispatch No</label>
-        <br/>
-        <span class=>{{ticket.dispatchNo}}</span>
-      </li>
+        <div class="col">
+          <label>Dispatch No.</label>
+        </div>
 
-      <li class="item">
-        <label>Order</label>
-        <br/>
-        <span>{{ticket.orderID}}</span>
+        <div class="col">
+          <label>Order</label>
+        </div>
 
-      <li class="item">
-        <label>Truck</label>
-        <br/>
-        <span>{{ticket.truckCode}}</span>
-      </li>
+        <div class="col">
+          <label>Truck</label>
+        </div>
 
-      <li class="item">
-        <label>Purchase Order</label>
-        <br/>
-        <span>{{ticket.purchaseOrder || 'N/A'}}</span>
-      </li>
+        <div class="col">
+          <label>Po Number</label>
+        </div>
 
-      <li class="item">
-        <label>Location ID</label>
-        <br/>
-        <span class=>{{ticket.locationID || 'N/A'}}</span>
-      </li>
+        <div class="col">
+          <label>Location Id</label>
+        </div>
 
-      <li class="item" on-hold="openModal('sourceInfo');">
-        <label>Source Information</label>
-        <br/>
-        <span>{{ticket.customerName}}</span>
-        <br/>
-        <span>{{ticket.address1}}</span>
-        <br/>
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <span>{{ticket.dispatchNo}}</span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.orderID}}</span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.truckCode}}</span>
+        </div>
+
+        <div class="col">
+          <span>{{ticket.purchaseOrder || 'N/A'}}</span>
+        </div>
+
+        <div class="col">
+          <span class=>{{ticket.locationID || 'N/A'}}</span>
+        </div>
+
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col">
+          <h4>Source Information</h4>
+        </div>
+
+        <div class="col">
+          <h4>Delivery Information</h4>
+        </div>
+
+        <div class="col">
+          <h4>Order</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <span>{{ticket.customerName}}</span>
+          <br/>
+          <span>{{ticket.address1}}</span>
+          <br/>
         <span>{{ticket.address3}}
                   <span class="triangle-container">
             <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
             </span>
           </span>
         </span>
-      </li>
+        </div>
 
-      <li class="item" on-hold="openModal('deliveryInfo');">
-        <label>Delivery Information</label>
-        <br/>
-        <span>{{ticket.locationName}}</span>
-        <br/>
-        <span>{{ticket.locationAddress1}}</span>
-        <br/>
+        <div class="col">
+          <span>{{ticket.locationName}}</span>
+          <br/>
+          <span>{{ticket.locationAddress1}}</span>
+          <br/>
         <span>{{ticket.locationAddress3}}
           <span class="triangle-container">
             <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
             </span>
           </span>
         </span>
-      </li>
+        </div>
 
-      <li class="item">
-        <label>Order</label>
-        <br/>
-        <span>{{ticket.orderID}}</span>
-        <br/>
-        <span>{{ticket.orderDescription}}</span>
-      </li>
+        <div class="col">
+          <span>{{ticket.orderID}}</span>
+          <br/>
+          <span>{{ticket.orderDescription}}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <ul class="list">
+
+
 
       <li class="item">
         <label>Scheduled Load Size</label>
