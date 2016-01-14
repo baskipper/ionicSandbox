@@ -1,34 +1,33 @@
 <ion-view view-title="Water Added">
   <ion-content>
 
-    <ul class="list">
-      <li class="item">
-        <div class="row">
-          <div class="col">
-            <span>Water Added: </span>
-          </div>
-          <div class="col">
-            <span>{{waterAdded}} </span>
-          </div>
-          <div class="col">
-            <button on-tap="increaseWater()" class="button button-positive">+</button>
-            <button on-tap="decreaseWater()" class="button button-assertive">-</button>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col">
+        <textarea placeholder="Comments" rows="18" style="border:1px solid; width:100%; height:100%;"></textarea>
+      </div>
+      <div class="col" style="background-color: #f5f5f5; border: 1px solid #e3e3e3; text-align:center; color:#00add5;">
 
-      </li>
+        <h3>Water Added</h3>
+        <br/>
+        <button on-tap="increaseWater()" class="button button-block button-positive">
+          <i class="ion-plus"></i>
+        </button>
+        <br/>
 
-      <li class="item">
-        <div class="row">
-          <span>Driver Comments</span>
-        </div>
-        <div class="row">
-          <input class="item-input" type="text" style="width:100%;"> </input>
-        </div>
-      </li>
-      <li class="item">
-        <button on-tap="submitWater()" class="button button-balanced" style="width:100%;">Submit</button>
-      </li>
-    </ul>
+        <input type="number" min="0" ng-model="waterAdded"
+               style="font-size: x-large; text-align:center; border:0; background-color: #f5f5f5;">
+
+        <br/>
+        <span>ADDED</span>
+        <br/>
+        <button on-tap="decreaseWater()" class="button button-block button-assertive">
+          <i class="ion-minus"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <button on-tap="submitWater()" class="button button-block button-positive" >Ticket Acceptance</button>
+
   </ion-content>
 </ion-view>
