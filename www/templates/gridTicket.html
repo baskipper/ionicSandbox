@@ -49,7 +49,7 @@
 
         </div>
 
-        <div class="col">
+        <div class="col" on-hold="openModal('mixInfo');">
         <span>
           {{ticket.ticketLines[0].itemDesc}}
           <span class="triangle-container">
@@ -117,7 +117,7 @@
 
         </div>
 
-        <div class="col">
+        <div class="col" on-hold="openModal('truckInfo');">
         <span>{{ticket.truckCode}}
           <span class="triangle-container">
             <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
@@ -167,7 +167,7 @@
         <span>{{ticket.soldToCustomer.address.countrySubdivision}}
           {{ticket.soldToCustomer.address.postalCode}}</span>
         </div>
-        <div class="col">
+        <div class="col" on-hold="openModal('deliveryInfo');">
           <span>{{ticket.shipToCustomer.name}}</span>
           <br/>
           <span>{{ticket.shipToCustomer.address.lineOne}} {{ticket.shipToCustomer.address.lineTwo || " "}}</span>
@@ -179,7 +179,7 @@
             </span>
           </span>
         </div>
-        <div class="col">
+        <div class="col" on-hold="openModal('codInfo');">
           <span>Amount: {{ticket.totalPrice + ticket.tax | currency}}</span>
           <br/>
           <span>Method:{{ticket.selectedPayment.type}}</span>
@@ -220,19 +220,29 @@
       <hr>
       <div class="row">
         <div class="col">
-          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          <ionic-timepicker input-obj="timePickerObject">
+            <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          </ionic-timepicker>
         </div>
         <div class="col">
-          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          <ionic-timepicker input-obj="timePickerObject">
+            <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          </ionic-timepicker>
         </div>
         <div class="col">
-          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          <ionic-timepicker input-obj="timePickerObject">
+            <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          </ionic-timepicker>
         </div>
         <div class="col">
-          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          <ionic-timepicker input-obj="timePickerObject">
+            <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          </ionic-timepicker>
         </div>
         <div class="col">
-          <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          <ionic-timepicker input-obj="timePickerObject">
+            <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+          </ionic-timepicker>
         </div>
       </div>
 
