@@ -5,7 +5,19 @@ ion-tabs.tabs-color-active-positive .tab-item {
   color: white;
 }
 
+#finalizeOptions label
+{
+  color: #536878;
+  font-size: 18px;
+  font-weight: 500;
+  border: 0;
+  padding: 0;
+}
 
+#finalizeOptions .clear-left
+{
+  padding-left: 60px;
+}
 
 #ticketInfo label, #haulerInfo label
 {

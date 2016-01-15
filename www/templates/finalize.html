@@ -1,66 +1,94 @@
-<ion-view view-title="Finalize">
+<ion-view view-title="Ticket Acceptance">
   <ion-content>
+    <div id="finalizeOptions">
+      <div class="row">
+        <div class="col">
+          <label>
+            Driver Comments
+          </label>
 
-    <ul class="list">
-      <li class="item">
-        <label>Driver Comments</label>
-        <br/>
-        <input class="item-input" type="text" style="width:100%;"> </input>
-      </li>
+        </div>
+        <div class="col">
+          <label>
+            Customer Comments
+          </label>
+        </div>
+      </div>
 
-      <li class="item">
-        <label>Customer Comments</label>
-        <br/>
-        <input class="item-input" type="text" style="width:100%;"> </input>
-      </li>
+      <div class="row">
+        <div class="col">
+          <textarea placeholder="Driver Comments" rows="5" disabled="disabled"
+                    style="background-coler:#eee; border:1px #ccc solid; width:100%;"></textarea>
+        </div>
+        <div class="col">
+          <textarea placeholder="Customer Comments" rows="5" style="border:1px #ccc solid; width:100%;"></textarea>
+        </div>
+      </div>
 
-      <li class="item">
-        <label>Email Address</label>
-        <br/>
-        <input class="item-input" type="text" style="width:100%;"> </input>
+      <div class="row">
 
-      </li>
-
-      <li class="item" on-hold="openModal('termsInfo')">
-        <label>Terms and Conditions
+        <div class="col">
+          <label>Terms and Conditions
           <span class="triangle-container">
             <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
             </span>
           </span>
-        </label>
-      </li>
+          </label>
+        </div>
 
-      <li class="item" on-hold="openModal('warningsInfo')">
-        <label>Warnings and Cautions
-          <span class="triangle-container">
-            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
-            </span>
-          </span></label>
-      </li>
-
-      <li class="item" on-hold="openModal('propertyInfo')">
-        <ion-list>
-          <ion-checkbox>Property Damage
+        <div class="col" on-hold="openModal('termsInfo')">
+          <ion-checkbox class="clear-left">
+            Property Damage
             <span class="triangle-container">
               <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
               </span>
           </span>
           </ion-checkbox>
-          <ion-checkbox>Water Release</ion-checkbox>
-          <ion-checkbox>Driver Acceptance</ion-checkbox>
+        </div>
 
-        </ion-list>
+        <div class="col">
 
-      </li>
+        </div>
 
-      <li class="item">
-            <canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>
-      </li>
+      </div>
+      <div class="row">
+        <div class="col" on-hold="openModal('warningsInfo')">
+          <label>Warnings and Cautions
+          <span class="triangle-container">
+            <span class="triangle-icon triangle-product" data-ng-class="[accepted]">
+            </span>
+          </span>
+          </label>
+        </div>
+        <div class="col">
+          <ion-checkbox class="clear-left">Water Release</ion-checkbox>
+        </div>
+        <div class="col">
 
-      <li class="item">
-        <button on-tap="finalizeTicket()" class="button button-balanced" style="width:100%;">Submit</button>
-      </li>
-    </ul>
+        </div>
 
+      </div>
+      <div class="row">
+        <div class="col-75">
+          <input class="item-input" type="text" placeholder="email address" style="width:100%;"> </input>
+        </div>
+        <div class="col-25">
+          <ion-checkbox class="clear-left">Driver Acceptance</ion-checkbox>
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-75">
+          <canvas id='signatureCanvas' width='100' height='180' style='width: 95%; height: 180px; border: 1px solid black;'></canvas>
+        </div>
+        <div class="col-25">
+          <button class="button button-block button-assertive">Clear Signature</button>
+        <button class="button button-block button-calm">Submit</button>
+        </div>
+
+      </div>
+
+    </div>
   </ion-content>
 </ion-view>

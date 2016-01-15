@@ -68,6 +68,8 @@ angular.module('starter.controllers', [])
     var canvas = document.getElementById('signatureCanvas');
     var signaturePad = new SignaturePad(canvas);
 
+    canvas.width = canvas.offsetWidth;
+
     $scope.clearCanvas = function () {
       signaturePad.clear();
     };
