@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicActionSheet) {
+  .controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, $ionicActionSheet, TicketService) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -8,6 +8,22 @@ angular.module('starter.controllers', [])
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+
+    $scope.submitTicket = function () {
+      var ticketSubmitted = TicketService.getTicketSubmitted();
+      if (!ticketSubmitted || ticketSubmitted == "false") {
+        TicketService.setTicketSubmitted(true);
+        $state.go('ticket.water');
+      }
+      else {
+
+        $state.go('ticket.finalize');
+      }
+    };
+
+    $scope.information = function(){
+      $state.go('ticket.ticket');
+    };
 
     $ionicModal.fromTemplateUrl('templates/modals/warningsInfo.html', {
       id: 'about',
@@ -76,6 +92,21 @@ angular.module('starter.controllers', [])
             case 0:
               $scope.openModal('aboutModal');
                   break;
+            case 1:
+             $state.go('ticket.hauler');
+              break;
+            case 2:
+              $state.go('ticket.ticket');
+              break;
+            case 3:
+              $scope.openModal('aboutModal');
+              break;
+            case 4:
+              $state.go('ticket.finalize');
+              break;
+            case 5:
+              $scope.openModal('aboutModal');
+              break;
             default:
                   break;
           }

@@ -18,7 +18,7 @@ navigation history that also transitions its views in and out.
   </ion-tab>
 
   <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-information" icon-on="ion-information" href="#/tab/chats">
+  <ion-tab title="Chats" icon-off="ion-information" icon-on="ion-information" ng-click="information()">
     <ion-nav-view ></ion-nav-view>
   </ion-tab>
 
@@ -29,7 +29,7 @@ navigation history that also transitions its views in and out.
 
   <div>
     <!-- Account Tab -->
-    <ion-tab title="Actions" icon-off="ion-edit" icon-on="ion-edit" ng-click="show()">
+    <ion-tab title="Actions" icon-off="ion-edit" icon-on="ion-edit" ng-click="submitTicket()">
       <ion-nav-view></ion-nav-view>
     </ion-tab>
   </div>
