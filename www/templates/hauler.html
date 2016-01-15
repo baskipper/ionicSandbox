@@ -105,7 +105,7 @@
       </div>
 
       <div class="row">
-        <div class="col">
+        <div class="col" on-hold="openModal('sourceInfo');">
           <span>{{ticket.customerName}}</span>
           <br/>
           <span>{{ticket.address1}}</span>
@@ -118,7 +118,7 @@
         </span>
         </div>
 
-        <div class="col">
+        <div class="col" on-hold="openModal('deliveryInfo');">
           <span>{{ticket.locationName}}</span>
           <br/>
           <span>{{ticket.locationAddress1}}</span>
