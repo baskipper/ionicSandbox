@@ -9,6 +9,47 @@ angular.module('starter.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
+    $ionicModal.fromTemplateUrl('templates/modals/warningsInfo.html', {
+      id: 'about',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.aboutModal = modal;
+    });
+
+    {
+      $scope.openModal = function (modalName) {
+
+        switch (modalName) {
+          case 'aboutModal':
+            $scope.aboutModal.show();
+            break;
+          default:
+            break;
+        }
+      };
+
+      $scope.closeModal = function () {
+        $scope.aboutModal.hide();
+
+      };
+
+      $scope.$on('$destroy', function () {
+        $scope.aboutModal.remove();
+
+
+      });
+
+      // Execute action on hide modal
+      $scope.$on('mixInfoModal.hidden', function () {
+        // Execute action
+      });
+      // Execute action on remove modal
+      $scope.$on('mixInfoModal.removed', function () {
+        // Execute action
+      });
+    }
+
     $scope.show = function () {
 
       var hideSheet = $ionicActionSheet.show({
@@ -23,12 +64,21 @@ angular.module('starter.controllers', [])
           {text: 'Change Password'},
           {text: 'Log out'}
         ],
-        titleText: 'Options',
+        cssClass: 'darkOptions',
         cancelText: 'Never Mind',
         cancel: function(){
 
         },
         buttonClicked: function(index, buttonIn){
+
+          switch (index)
+          {
+            case 0:
+              $scope.openModal('aboutModal');
+                  break;
+            default:
+                  break;
+          }
           console.log('You clicked ' + buttonIn.text);
           return true;
         }

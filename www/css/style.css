@@ -1,12 +1,15 @@
 
-
-
 ion-tabs.tabs-color-active-positive .tab-item {
   color: white;
 }
 
-#finalizeOptions label
-{
+.darkOptions button {
+
+  color: #fff !important;
+  background-color: #444 !important;
+}
+
+#finalizeOptions label {
   color: #536878;
   font-size: 18px;
   font-weight: 500;
@@ -14,23 +17,19 @@ ion-tabs.tabs-color-active-positive .tab-item {
   padding: 0;
 }
 
-#finalizeOptions .clear-left
-{
+#finalizeOptions .clear-left {
   padding-left: 60px;
 }
 
-#ticketInfo label, #haulerInfo label
-{
-  font-weight:bold;
+#ticketInfo label, #haulerInfo label {
+  font-weight: bold;
 }
 
-#ticketInfo hr, #haulerInfo hr
-{
+#ticketInfo hr, #haulerInfo hr {
   border: 1px solid #00add5;
 }
 
-#ticketInfo h4, #haulerInfo h4
-{
+#ticketInfo h4, #haulerInfo h4 {
   color: #00add5;
   font-family: TitilliumWebBold, sans-serif;
   text-transform: capitalize;
@@ -42,9 +41,8 @@ ion-tabs.tabs-color-active-positive .tab-item {
   margin: 0;
 }
 
-#paymentAmount
-{
-  width:100%;
+#paymentAmount {
+  width: 100%;
 }
 
 li > label {
