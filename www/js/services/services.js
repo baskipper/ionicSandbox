@@ -37,6 +37,7 @@ angular.module('ticket.services', [])
 
     var self = this;
     var TRUCKCODE = 'ticket.truckCode';
+    var WAITVIEW = 'ticket.waitView';
 
     self.getCurrentTabs = function (stateIn) {
       var tabsSetup;
@@ -44,12 +45,61 @@ angular.module('ticket.services', [])
         case TRUCKCODE:
           tabsSetup = truckCodeTabs();
           break;
+        case WAITVIEW:
+          tabsSetup = waitViewTabs();
+          break;
         default:
           tabsSetup = {};
           break;
       }
       return tabsSetup;
     };
+
+
+    function waitViewTabs() {
+      return $ionicActionSheet.show({
+        buttons: [
+          {text: 'About'},
+          {text: 'Change Truck Code'},
+          {text: 'Get Assignment'},
+          {text: 'Get Ticket'},
+          {text: 'Pending Tickets'},
+          {text: 'Admin'},
+          {text: 'Change Password'},
+          {text: 'Log out'}
+        ],
+        cssClass: 'darkOptions',
+        cancelText: 'Never Mind',
+        cancel: function () {
+
+        },
+        buttonClicked: function (index, buttonIn) {
+
+          switch (index) {
+            case 0:
+              $rootScope.openModal('aboutModal');
+              break;
+            case 1:
+              $state.go('ticket.truckCode');
+              break;
+            case 2:
+              $state.go('ticket.hauler');
+              break;
+            case 3:
+              $state.go('ticket.ticket');
+              break;
+            case 4:
+              $rootScope.openModal('aboutModal');
+              break;
+            default:
+              break;
+          }
+          console.log('You clicked ' + buttonIn.text);
+          return true;
+        }
+      });
+    }
+
 
     function truckCodeTabs() {
       return $ionicActionSheet.show({
