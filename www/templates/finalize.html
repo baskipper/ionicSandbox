@@ -80,11 +80,12 @@
       <br>
       <div class="row">
         <div class="col-75">
-          <canvas id='signatureCanvas' width='100' height='180' style='width: 95%; height: 180px; border: 1px solid black;'></canvas>
+          <canvas id='signatureCanvas' width='100' height='180'
+                  style='width: 95%; height: 180px; border: 1px solid black;'></canvas>
         </div>
         <div class="col-25">
           <button class="button button-block button-assertive">Clear Signature</button>
-        <button class="button button-block button-calm">Submit</button>
+          <button class="button button-block button-calm" ng-click="finalizeTicket()">Submit</button>
         </div>
 
       </div>
