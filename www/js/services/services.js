@@ -40,6 +40,7 @@ angular.module('ticket.services', [])
     var WAITVIEW = 'ticket.waitView';
     var HAULER = 'ticket.hauler';
     var TICKET = 'ticket.ticket';
+    var WATER = 'ticket.water';
 
     self.getCurrentTabs = function (stateIn) {
       var tabsSetup;
@@ -56,12 +57,55 @@ angular.module('ticket.services', [])
         case TICKET:
           tabsSetup = ticketTabs();
           break;
+        case WATER:
+          tabsSetup = waterTabs();
+          break;
         default:
           tabsSetup = {};
           break;
       }
       return tabsSetup;
     };
+
+    function waterTabs(){
+      return $ionicActionSheet.show({
+        buttons: [
+          {text: 'About'},
+          {text: 'Get Assignment'},
+          {text: 'Pending Tickets'},
+          {text: 'Driver Acceptance'},
+          {text: 'Admin'},
+          {text: 'Change Password'},
+          {text: 'Log out'}
+        ],
+        cssClass: 'darkOptions',
+        cancelText: 'Never Mind',
+        cancel: function () {
+
+        },
+        buttonClicked: function (index, buttonIn) {
+
+          switch (index) {
+            case 0:
+              $rootScope.openModal('aboutModal');
+              break;
+            case 1:
+              $state.go('ticket.hauler');
+              break;
+            case 2:
+              $rootScope.openModal('aboutModal');
+              break;
+            case 3:
+              $state.go('ticket.finalize');
+              break;
+            default:
+              break;
+          }
+          console.log('You clicked ' + buttonIn.text);
+          return true;
+        }
+      });
+    }
 
     function ticketTabs(){
       return $ionicActionSheet.show({
