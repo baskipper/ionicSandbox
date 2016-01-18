@@ -13,23 +13,23 @@ navigation history that also transitions its views in and out.
 
 
   <!-- Dashboard Tab -->
-  <ion-tab title="Status" disabled="optionsDisabled" ng-class="[disabled]" icon="ion-gear-b" ng-click="show();">
+  <ion-tab title="Status"  icon="ion-gear-b" ng-click="show();">
     <ion-nav-view></ion-nav-view>
   </ion-tab>
 
   <!-- Chats Tab -->
-  <ion-tab title="Chats" icon="ion-information" on-select="information()">
-    <ion-nav-view></ion-nav-view>
+  <ion-tab title="Chats" disabled="extraButtons" ng-class="[disabled]" icon="ion-information"  ng-click="information()">
+
   </ion-tab>
 
   <!-- Account Tab -->
-  <ion-tab title="Account" icon="ion-pricetags" href="#/tab/account" ng-style="{'color': color}">
+  <ion-tab title="Account" disabled="extraButtons" ng-class="[disabled]" icon="ion-pricetags" href="#/tab/account">
     <ion-nav-view></ion-nav-view>
   </ion-tab>
 
   <div>
     <!-- Account Tab -->
-    <ion-tab title="Actions" icon="ion-edit" disabled="false" ng-click="submitTicket()">
+    <ion-tab title="Actions" disabled="extraButtons" ng-class="[disabled]" icon="ion-edit" disabled="false" ng-click="submitTicket()">
       <ion-nav-view></ion-nav-view>
     </ion-tab>
   </div>

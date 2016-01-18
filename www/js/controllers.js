@@ -9,6 +9,19 @@ angular.module('starter.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
+    $scope.extraButtons = true;
+
+    $scope.$on('$ionicView.enter', function (e) {
+      var currentState = $ionicHistory.currentStateName();
+      if (currentState == 'ticket.ticket' || currentState == 'ticket.finalize' || currentState == 'ticket.water')
+      {
+        $scope.extraButtons = false;
+      }
+      else
+      {
+        $scope.extraButtons = true;
+      }
+    });
     $scope.optionsDisabled = true;
     $scope.disabled = $scope.optionsDisabled ? "disabled" : "";
 
@@ -24,8 +37,10 @@ angular.module('starter.controllers', [])
       }
     };
 
-    $scope.information = function(){
-      $state.go('ticket.ticket');
+    $scope.information = function () {
+
+        $state.go('ticket.ticket');
+
     };
 
     $ionicModal.fromTemplateUrl('templates/modals/warningsInfo.html', {
@@ -95,7 +110,7 @@ angular.module('starter.controllers', [])
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
 
-    },300)
+    }, 300)
 
     $timeout(function () {
       $state.go('ticket.hauler');
@@ -144,55 +159,55 @@ angular.module('starter.controllers', [])
     });
 
     {
-    $scope.openModal = function (modalName) {
+      $scope.openModal = function (modalName) {
 
-      switch (modalName) {
-        case 'propertyInfo':
-          $scope.propertyInfoModal.show();
-          break;
-        case 'termsInfo':
-          $scope.termsInfoModal.show();
-          break;
-        case 'warningsInfo':
-          $scope.warningsInfoModal.show();
-          break;
-        default:
+        switch (modalName) {
+          case 'propertyInfo':
+            $scope.propertyInfoModal.show();
+            break;
+          case 'termsInfo':
+            $scope.termsInfoModal.show();
+            break;
+          case 'warningsInfo':
+            $scope.warningsInfoModal.show();
+            break;
+          default:
 
-          break;
-      }
-    };
+            break;
+        }
+      };
 
-    $scope.closeModal = function () {
-      $scope.propertyInfoModal.hide();
-      $scope.termsInfoModal.hide();
-      $scope.warningsInfoModal.hide();
-    };
+      $scope.closeModal = function () {
+        $scope.propertyInfoModal.hide();
+        $scope.termsInfoModal.hide();
+        $scope.warningsInfoModal.hide();
+      };
 
-    $scope.$on('$destroy', function () {
-      $scope.propertyInfoModal.remove();
-      $scope.termsInfoModal.remove();
-      $scope.warningsInfoModal.remove();
+      $scope.$on('$destroy', function () {
+        $scope.propertyInfoModal.remove();
+        $scope.termsInfoModal.remove();
+        $scope.warningsInfoModal.remove();
 
-    });
+      });
 
-    // Execute action on hide modal
-    $scope.$on('mixInfoModal.hidden', function () {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('mixInfoModal.removed', function () {
-      // Execute action
-    });
+      // Execute action on hide modal
+      $scope.$on('mixInfoModal.hidden', function () {
+        // Execute action
+      });
+      // Execute action on remove modal
+      $scope.$on('mixInfoModal.removed', function () {
+        // Execute action
+      });
 
-    // Execute action on hide modal
-    $scope.$on('deliveryInfoModal.hidden', function () {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('deliveryInfoModal.removed', function () {
-      // Execute action
-    });
-  }
+      // Execute action on hide modal
+      $scope.$on('deliveryInfoModal.hidden', function () {
+        // Execute action
+      });
+      // Execute action on remove modal
+      $scope.$on('deliveryInfoModal.removed', function () {
+        // Execute action
+      });
+    }
 
     $scope.finalizeTicket = function () {
       TicketService.setTicketSubmitted(false);
@@ -222,7 +237,7 @@ angular.module('starter.controllers', [])
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
 
-    },300)
+    }, 300)
 
     {
       $ionicModal.fromTemplateUrl('templates/modals/hauler/deliveryInfo.html', {
@@ -447,108 +462,108 @@ angular.module('starter.controllers', [])
     }
 
     {
-    $scope.openTimeModal = function (selectedTime) {
-      $scope.selectedTime = selectedTime;
-      console.log($scope.selectedTime);
-      $scope.openModal('overrideTime');
-    };
+      $scope.openTimeModal = function (selectedTime) {
+        $scope.selectedTime = selectedTime;
+        console.log($scope.selectedTime);
+        $scope.openModal('overrideTime');
+      };
 
-    $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
-      id: 'mixInfo',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.mixInfoModal = modal;
-    });
+      $ionicModal.fromTemplateUrl('templates/modals/mixInfo.html', {
+        id: 'mixInfo',
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.mixInfoModal = modal;
+      });
 
-    $ionicModal.fromTemplateUrl('templates/modals/ticketDeliveryInfo.html', {
-      id: 'deliveryInfo',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.deliveryInfoModal = modal;
-    });
+      $ionicModal.fromTemplateUrl('templates/modals/ticketDeliveryInfo.html', {
+        id: 'deliveryInfo',
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.deliveryInfoModal = modal;
+      });
 
-    $ionicModal.fromTemplateUrl('templates/modals/truckInfo.html', {
-      id: 'truckInfo',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.truckInfoModal = modal;
-    });
+      $ionicModal.fromTemplateUrl('templates/modals/truckInfo.html', {
+        id: 'truckInfo',
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.truckInfoModal = modal;
+      });
 
-    $ionicModal.fromTemplateUrl('templates/modals/codInfo.html', {
-      id: 'codInfo',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.codInfoModal = modal;
-    });
+      $ionicModal.fromTemplateUrl('templates/modals/codInfo.html', {
+        id: 'codInfo',
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.codInfoModal = modal;
+      });
 
-    $ionicModal.fromTemplateUrl('templates/modals/overrideTime.html', {
-      id: 'overrideTime',
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.overrideTimeModal = modal;
-    });
+      $ionicModal.fromTemplateUrl('templates/modals/overrideTime.html', {
+        id: 'overrideTime',
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.overrideTimeModal = modal;
+      });
 
-    $scope.openModal = function (modalName) {
+      $scope.openModal = function (modalName) {
 
-      switch (modalName) {
-        case 'mixInfo':
-          $scope.mixInfoModal.show();
-          break;
-        case 'deliveryInfo':
-          $scope.deliveryInfoModal.show();
-          break;
-        case 'truckInfo':
-          $scope.truckInfoModal.show();
-          break;
-        case 'codInfo':
-          $scope.codInfoModal.show();
-          break;
-        case 'overrideTime':
-          $scope.overrideTimeModal.show();
-        default:
-          break;
-      }
-    };
+        switch (modalName) {
+          case 'mixInfo':
+            $scope.mixInfoModal.show();
+            break;
+          case 'deliveryInfo':
+            $scope.deliveryInfoModal.show();
+            break;
+          case 'truckInfo':
+            $scope.truckInfoModal.show();
+            break;
+          case 'codInfo':
+            $scope.codInfoModal.show();
+            break;
+          case 'overrideTime':
+            $scope.overrideTimeModal.show();
+          default:
+            break;
+        }
+      };
 
-    $scope.closeModal = function () {
-      $scope.mixInfoModal.hide();
-      $scope.deliveryInfoModal.hide();
-      $scope.truckInfoModal.hide();
-      $scope.codInfoModal.hide();
-      $scope.overrideTimeModal.hide();
-    };
+      $scope.closeModal = function () {
+        $scope.mixInfoModal.hide();
+        $scope.deliveryInfoModal.hide();
+        $scope.truckInfoModal.hide();
+        $scope.codInfoModal.hide();
+        $scope.overrideTimeModal.hide();
+      };
 
-    $scope.$on('$destroy', function () {
-      $scope.mixInfoModal.remove();
-      $scope.deliveryInfoModal.remove();
-      $scope.truckInfoModal.remove();
-      $scope.codInfoModal.remove();
-      $scope.overrideTimeModal.remove();
-    });
+      $scope.$on('$destroy', function () {
+        $scope.mixInfoModal.remove();
+        $scope.deliveryInfoModal.remove();
+        $scope.truckInfoModal.remove();
+        $scope.codInfoModal.remove();
+        $scope.overrideTimeModal.remove();
+      });
 
-    // Execute action on hide modal
-    $scope.$on('mixInfoModal.hidden', function () {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('mixInfoModal.removed', function () {
-      // Execute action
-    });
+      // Execute action on hide modal
+      $scope.$on('mixInfoModal.hidden', function () {
+        // Execute action
+      });
+      // Execute action on remove modal
+      $scope.$on('mixInfoModal.removed', function () {
+        // Execute action
+      });
 
-    // Execute action on hide modal
-    $scope.$on('deliveryInfoModal.hidden', function () {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('deliveryInfoModal.removed', function () {
-      // Execute action
-    });
-  }
+      // Execute action on hide modal
+      $scope.$on('deliveryInfoModal.hidden', function () {
+        // Execute action
+      });
+      // Execute action on remove modal
+      $scope.$on('deliveryInfoModal.removed', function () {
+        // Execute action
+      });
+    }
 
     $scope.submitTicket = function () {
       var ticketSubmitted = TicketService.getTicketSubmitted();
