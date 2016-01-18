@@ -9,7 +9,8 @@ angular.module('starter.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
-    $scope.color = 'blue';
+    $scope.optionsDisabled = true;
+    $scope.disabled = $scope.optionsDisabled ? "disabled" : "";
 
     $scope.submitTicket = function () {
       var ticketSubmitted = TicketService.getTicketSubmitted();
