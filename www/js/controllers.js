@@ -95,7 +95,7 @@ angular.module('starter.controllers', [])
     },300)
 
     $timeout(function () {
-      //$state.go('ticket.hauler');
+      $state.go('ticket.hauler');
     }, 5000)
   })
 
