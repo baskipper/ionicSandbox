@@ -1,4 +1,9 @@
 
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+  color: #00add5 !important;
+  border: 0 !important;
+}
+
 ion-tabs.tabs-color-active-positive .tab-item {
   color: white;
 }

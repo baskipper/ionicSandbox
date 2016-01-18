@@ -9,6 +9,8 @@ angular.module('starter.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
+    $scope.color = 'blue';
+
     $scope.submitTicket = function () {
       var ticketSubmitted = TicketService.getTicketSubmitted();
       if (!ticketSubmitted || ticketSubmitted == "false") {
