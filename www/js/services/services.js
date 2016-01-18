@@ -28,12 +28,12 @@ angular.module('ticket.services', [])
     };
 
     self.getTicketSubmitted = function () {
-      return self.ticketSubmitted;
+      return (self.ticketSubmitted == 'true' || self.ticketSubmitted == true);
     };
 
     setup();
   })
-  .service('TabService', function ($ionicActionSheet, $rootScope, $state) {
+  .service('TabService', function ($ionicActionSheet, $rootScope, $state, TicketService) {
 
     var self = this;
     var TRUCKCODE = 'ticket.truckCode';
@@ -108,43 +108,91 @@ angular.module('ticket.services', [])
     }
 
     function ticketTabs(){
-      return $ionicActionSheet.show({
-        buttons: [
-          {text: 'About'},
-          {text: 'Get Assignment'},
-          {text: 'Pending Tickets'},
-          {text: 'Driver Acceptance'},
-          {text: 'Admin'},
-          {text: 'Change Password'},
-          {text: 'Log out'}
-        ],
-        cssClass: 'darkOptions',
-        cancelText: 'Never Mind',
-        cancel: function () {
 
-        },
-        buttonClicked: function (index, buttonIn) {
+      if (TicketService.getTicketSubmitted())
+      {
+        return $ionicActionSheet.show({
+          buttons: [
+            {text: 'About'},
+            {text: 'Get Assignment'},
+            {text: 'Pending Tickets'},
+            {text: 'Driver Acceptance'},
+            {text: 'Exit Acceptance View'},
+            {text: 'Admin'},
+            {text: 'Change Password'},
+            {text: 'Log out'}
+          ],
+          cssClass: 'darkOptions',
+          cancelText: 'Never Mind',
+          cancel: function () {
 
-          switch (index) {
-            case 0:
-              $rootScope.openModal('aboutModal');
-              break;
-            case 1:
-              $state.go('ticket.hauler');
-              break;
-            case 2:
-              $rootScope.openModal('aboutModal');
-              break;
-            case 3:
-              $state.go('ticket.finalize');
-              break;
-            default:
-              break;
+          },
+          buttonClicked: function (index, buttonIn) {
+
+            switch (index) {
+              case 0:
+                $rootScope.openModal('aboutModal');
+                break;
+              case 1:
+                $state.go('ticket.hauler');
+                break;
+              case 2:
+                $rootScope.openModal('aboutModal');
+                break;
+              case 3:
+                $state.go('ticket.finalize');
+                break;
+              case 4:
+                $rootScope.openModal('aboutModal');
+                break;
+              default:
+                break;
+            }
+            console.log('You clicked ' + buttonIn.text);
+            return true;
           }
-          console.log('You clicked ' + buttonIn.text);
-          return true;
-        }
-      });
+        });
+      }
+      else {
+
+        return $ionicActionSheet.show({
+          buttons: [
+            {text: 'About'},
+            {text: 'Get Assignment'},
+            {text: 'Pending Tickets'},
+            {text: 'Driver Acceptance'},
+            {text: 'Admin'},
+            {text: 'Change Password'},
+            {text: 'Log out'}
+          ],
+          cssClass: 'darkOptions',
+          cancelText: 'Never Mind',
+          cancel: function () {
+
+          },
+          buttonClicked: function (index, buttonIn) {
+
+            switch (index) {
+              case 0:
+                $rootScope.openModal('aboutModal');
+                break;
+              case 1:
+                $state.go('ticket.hauler');
+                break;
+              case 2:
+                $rootScope.openModal('aboutModal');
+                break;
+              case 3:
+                $state.go('ticket.finalize');
+                break;
+              default:
+                break;
+            }
+            console.log('You clicked ' + buttonIn.text);
+            return true;
+          }
+        });
+      }
     }
 
     function haulerTabs(){
