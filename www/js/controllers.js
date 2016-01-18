@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, $ionicActionSheet, TicketService) {
+  .controller('AppCtrl', function ($scope, $rootScope, $state, $ionicModal, $timeout, $ionicActionSheet, TicketService, TabService, $ionicHistory) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -30,15 +30,15 @@ angular.module('starter.controllers', [])
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
-      $scope.aboutModal = modal;
+      $rootScope.aboutModal = modal;
     });
 
     {
-      $scope.openModal = function (modalName) {
+      $rootScope.openModal = function (modalName) {
 
         switch (modalName) {
           case 'aboutModal':
-            $scope.aboutModal.show();
+            $rootScope.aboutModal.show();
             break;
           default:
             break;
@@ -46,13 +46,12 @@ angular.module('starter.controllers', [])
       };
 
       $scope.closeModal = function () {
-        $scope.aboutModal.hide();
+        $rootScope.aboutModal.hide();
 
       };
 
       $scope.$on('$destroy', function () {
-        $scope.aboutModal.remove();
-
+        $rootScope.aboutModal.remove();
 
       });
 
@@ -67,53 +66,9 @@ angular.module('starter.controllers', [])
     }
 
     $scope.show = function () {
+      console.log($ionicHistory.currentStateName());
 
-      var hideSheet = $ionicActionSheet.show({
-        buttons: [
-          {text: 'About'},
-          {text: 'Get Assignment'},
-          {text: 'Get Ticket'},
-          {text: 'Pending Tickets'},
-          {text: 'Driver Acceptance'},
-          {text: 'Exit Acceptance View'},
-          {text: 'Admin'},
-          {text: 'Change Password'},
-          {text: 'Log out'}
-        ],
-        cssClass: 'darkOptions',
-        cancelText: 'Never Mind',
-        cancel: function(){
-
-        },
-        buttonClicked: function(index, buttonIn){
-
-          switch (index)
-          {
-            case 0:
-              $scope.openModal('aboutModal');
-                  break;
-            case 1:
-             $state.go('ticket.hauler');
-              break;
-            case 2:
-              $state.go('ticket.ticket');
-              break;
-            case 3:
-              $scope.openModal('aboutModal');
-              break;
-            case 4:
-              $state.go('ticket.finalize');
-              break;
-            case 5:
-              $scope.openModal('aboutModal');
-              break;
-            default:
-                  break;
-          }
-          console.log('You clicked ' + buttonIn.text);
-          return true;
-        }
-      })
+      var hideSheet = TabService.getCurrentTabs($ionicHistory.currentStateName());
     }
 
 
