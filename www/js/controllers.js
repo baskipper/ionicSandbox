@@ -57,6 +57,11 @@ angular.module('starter.controllers', [])
 
     };
 
+    $scope.product = function(){
+      $state.go('ticket.product')
+
+    };
+
     $ionicModal.fromTemplateUrl('templates/modals/warningsInfo.html', {
       id: 'about',
       scope: $scope,
@@ -231,6 +236,21 @@ angular.module('starter.controllers', [])
   })
 
   .controller('waterCtrl', function ($scope, TicketService, $state, $timeout) {
+    $scope.waterAdded = 0;
+    $scope.increaseWater = function () {
+      $scope.waterAdded++;
+    };
+    $scope.decreaseWater = function () {
+      if ($scope.waterAdded != 0) {
+        $scope.waterAdded--;
+      }
+    };
+    $scope.submitWater = function () {
+      $state.go('ticket.ticket')
+    };
+  })
+
+  .controller('productCtrl', function ($scope, TicketService, $state, $timeout) {
     $scope.waterAdded = 0;
     $scope.increaseWater = function () {
       $scope.waterAdded++;

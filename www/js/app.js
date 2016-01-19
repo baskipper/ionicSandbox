@@ -81,6 +81,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
       }
     })
 
+    .state('ticket.product', {
+      url: '/product',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/product.html',
+          controller: 'productCtrl'
+        }
+      }
+    })
+
   .state('ticket.ticket', {
     url: '/info',
     views: {
