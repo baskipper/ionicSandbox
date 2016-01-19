@@ -21,6 +21,20 @@ angular.module('starter.controllers', [])
       {
         $scope.extraButtons = true;
       }
+
+      if (currentState == 'ticket.ticket')
+      {
+        var foo = document.getElementsByClassName('tab-nav tabs')[0];
+        var bar = foo.getElementsByTagName('a')[2];
+        bar.style.backgroundColor = "#18bc9a";
+      }
+      else
+      {
+        var foo = document.getElementsByClassName('tab-nav tabs')[0];
+        var bar = foo.getElementsByTagName('a')[2];
+        bar.style.backgroundColor = "";
+      }
+
     });
     $scope.optionsDisabled = true;
     $scope.disabled = $scope.optionsDisabled ? "disabled" : "";
