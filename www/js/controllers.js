@@ -11,12 +11,12 @@ angular.module('starter.controllers', [])
 
     $scope.extraButtons = true;
 
-    $scope.cancelAcceptance = function(){
+    $scope.cancelAcceptance = function () {
       TicketService.setTicketSubmitted(false);
       $state.go('ticket.ticket');
     };
 
-    function extraButtons(currentState){
+    function extraButtons(currentState) {
 
       return (currentState == 'ticket.ticket' || currentState == 'ticket.finalize' || currentState == 'ticket.water' || currentState == 'ticket.product');
     }
@@ -27,42 +27,36 @@ angular.module('starter.controllers', [])
       $scope.extraButtons = !extraButtons(currentState);
 
       //TODO: clean this up
-      if (currentState == 'ticket.ticket')
-      {
+      if (currentState == 'ticket.ticket') {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
         var bar = foo.getElementsByTagName('a')[2];
         bar.style.backgroundColor = "#18bc9a";
       }
-      else
-      {
+      else {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
         var bar = foo.getElementsByTagName('a')[2];
         bar.style.backgroundColor = "";
       }
 
 
-      if (currentState == 'ticket.product')
-      {
+      if (currentState == 'ticket.product') {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
         var bar = foo.getElementsByTagName('a')[3];
         bar.style.backgroundColor = "#18bc9a";
       }
-      else
-      {
+      else {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
         var bar = foo.getElementsByTagName('a')[3];
         bar.style.backgroundColor = "";
       }
 
 
-      if (currentState == 'ticket.finalize' || currentState == 'ticket.water')
-      {
+      if (currentState == 'ticket.finalize' || currentState == 'ticket.water') {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
         var bar = foo.getElementsByTagName('a')[4];
         bar.style.backgroundColor = "#18bc9a";
       }
-      else
-      {
+      else {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
         var bar = foo.getElementsByTagName('a')[4];
         bar.style.backgroundColor = "";
@@ -86,11 +80,11 @@ angular.module('starter.controllers', [])
 
     $scope.information = function () {
 
-        $state.go('ticket.ticket');
+      $state.go('ticket.ticket');
 
     };
 
-    $scope.product = function(){
+    $scope.product = function () {
       $state.go('ticket.product')
 
     };
@@ -512,6 +506,12 @@ angular.module('starter.controllers', [])
 
   .controller('TicketCtrl', function ($scope, TicketService, $state, $stateParams, $ionicModal) {
 
+
+    $scope.accepted = "";
+
+    $scope.$on('$ionicView.enter', function (e) {
+      $scope.accepted = TicketService.getTicketSubmitted() ? "accepted" : "";
+    });
 
     $scope.timePickerObject = {
       inputEpochTime: ((new Date()).getHours() * 60 * 60),  //Optional
