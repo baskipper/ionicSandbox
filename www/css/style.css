@@ -34,11 +34,11 @@ ion-tabs.tabs-color-active-positive .tab-item {
   padding-left: 60px;
 }
 
-#ticketInfo label, #haulerInfo label {
+#ticketInfo label, #haulerInfo label, #productInfo label {
   font-weight: bold;
 }
 
-#ticketInfo hr, #haulerInfo hr {
+#ticketInfo hr, #haulerInfo hr, #productInfo hr{
   border: 1px solid #00add5;
 }
 
