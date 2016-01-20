@@ -97,6 +97,13 @@ angular.module('starter.controllers', [])
     }).then(function (modal) {
       $rootScope.aboutModal = modal;
     });
+    $ionicModal.fromTemplateUrl('templates/modals/exitAcceptance.html', {
+      id: 'about',
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $rootScope.exitAcceptanceModal = modal;
+    });
 
     {
       $rootScope.openModal = function (modalName) {
@@ -105,6 +112,9 @@ angular.module('starter.controllers', [])
           case 'aboutModal':
             $rootScope.aboutModal.show();
             break;
+          case 'exitAcceptance':
+            $rootScope.exitAcceptanceModal.show();
+            break;
           default:
             break;
         }
@@ -112,11 +122,13 @@ angular.module('starter.controllers', [])
 
       $scope.closeModal = function () {
         $rootScope.aboutModal.hide();
+        $rootScope.exitAcceptanceModal.hide();
 
       };
 
       $scope.$on('$destroy', function () {
         $rootScope.aboutModal.remove();
+        $rootScope.exitAcceptanceModal.remove();
 
       });
 
@@ -153,15 +165,11 @@ angular.module('starter.controllers', [])
   .controller('waitCtrl', function ($scope, TicketService, $state, $timeout, $ionicHistory) {
     $scope.truckCode = TicketService.getTruckCode();
 
-    $timeout(function () {
-      $ionicHistory.clearCache();
-      $ionicHistory.clearHistory();
-
-    }, 300);
-
-    $timeout(function () {
-      $state.go('ticket.hauler');
-    }, 5000)
+    $scope.$on('$ionicView.enter', function (e) {
+      $timeout(function () {
+        $state.go('ticket.hauler');
+      }, 5000)
+    });
   })
 
   .controller('finalizeCtrl', function ($scope, TicketService, $state, $timeout, $ionicModal) {

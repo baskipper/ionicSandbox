@@ -1,0 +1,36 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h3 class="title">Exit Acceptance View</h3>
+
+  </ion-header-bar>
+  <ion-content>
+
+    <ion-list class="list">
+      <ion-item class="item">
+        <label>Truck Code</label>
+        <br/>
+        <span>{{ticket.truckCode}}</span>
+      </ion-item>
+
+      <ion-item class="item">
+        <label>License Number</label>
+        <br/>
+        <span>{{ticket.truck.licenseNumber || ''}}</span>
+      </ion-item>
+
+      <ion-item class="item">
+        <label>Type</label>
+        <br/>
+        <span>{{ticket.truck.type}}</span>
+      </ion-item>
+
+      <ion-item class="item">
+        <label>Seal ID</label>
+        <br/>
+        <span>{{ticket.truck.sealId}}</span>
+      </ion-item>
+
+    </ion-list>
+    <button class="button button-full  button-positive" ng-click="closeModal();">OK</button>
+  </ion-content>
+</ion-modal-view>

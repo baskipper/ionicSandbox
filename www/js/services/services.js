@@ -104,7 +104,7 @@ angular.module('ticket.services', [])
               $state.go('ticket.finalize');
               break;
             case 4:
-              $rootScope.openModal('aboutModal');
+              $rootScope.openModal('exitAcceptance');
               break;
             default:
               break;
