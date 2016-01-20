@@ -11,17 +11,17 @@ angular.module('starter.controllers', [])
 
     $scope.extraButtons = true;
 
-    $scope.$on('$ionicView.enter', function (e) {
-      var currentState = $ionicHistory.currentStateName();
-      if (currentState == 'ticket.ticket' || currentState == 'ticket.finalize' || currentState == 'ticket.water')
-      {
-        $scope.extraButtons = false;
-      }
-      else
-      {
-        $scope.extraButtons = true;
-      }
+    function extraButtons(currentState){
 
+      return (currentState == 'ticket.ticket' || currentState == 'ticket.finalize' || currentState == 'ticket.water' || currentState == 'ticket.product');
+    }
+
+    $scope.$on('$ionicView.enter', function (e) {
+
+      var currentState = $ionicHistory.currentStateName();
+      $scope.extraButtons = !extraButtons(currentState);
+
+      //TODO: clean this up
       if (currentState == 'ticket.ticket')
       {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
@@ -32,6 +32,34 @@ angular.module('starter.controllers', [])
       {
         var foo = document.getElementsByClassName('tab-nav tabs')[0];
         var bar = foo.getElementsByTagName('a')[2];
+        bar.style.backgroundColor = "";
+      }
+
+
+      if (currentState == 'ticket.product')
+      {
+        var foo = document.getElementsByClassName('tab-nav tabs')[0];
+        var bar = foo.getElementsByTagName('a')[3];
+        bar.style.backgroundColor = "#18bc9a";
+      }
+      else
+      {
+        var foo = document.getElementsByClassName('tab-nav tabs')[0];
+        var bar = foo.getElementsByTagName('a')[3];
+        bar.style.backgroundColor = "";
+      }
+
+
+      if (currentState == 'ticket.finalize' || currentState == 'ticket.water')
+      {
+        var foo = document.getElementsByClassName('tab-nav tabs')[0];
+        var bar = foo.getElementsByTagName('a')[4];
+        bar.style.backgroundColor = "#18bc9a";
+      }
+      else
+      {
+        var foo = document.getElementsByClassName('tab-nav tabs')[0];
+        var bar = foo.getElementsByTagName('a')[4];
         bar.style.backgroundColor = "";
       }
 
@@ -129,7 +157,7 @@ angular.module('starter.controllers', [])
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
 
-    }, 300)
+    }, 300);
 
     $timeout(function () {
       $state.go('ticket.hauler');
@@ -271,7 +299,7 @@ angular.module('starter.controllers', [])
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
 
-    }, 300)
+    }, 300);
 
     {
       $ionicModal.fromTemplateUrl('templates/modals/hauler/deliveryInfo.html', {
