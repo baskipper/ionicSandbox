@@ -11,6 +11,11 @@ angular.module('starter.controllers', [])
 
     $scope.extraButtons = true;
 
+    $scope.cancelAcceptance = function(){
+      TicketService.setTicketSubmitted(false);
+      $state.go('ticket.ticket');
+    };
+
     function extraButtons(currentState){
 
       return (currentState == 'ticket.ticket' || currentState == 'ticket.finalize' || currentState == 'ticket.water' || currentState == 'ticket.product');
