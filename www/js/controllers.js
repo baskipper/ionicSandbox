@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $rootScope, $state, $ionicModal, $timeout, $ionicActionSheet, TicketService, TabService, $ionicHistory) {
+  .controller('AppCtrl', function ($scope, $rootScope, $state, $ionicModal, $timeout, $ionicActionSheet, TicketService, TabService, $ionicHistory, $location) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -13,7 +13,8 @@ angular.module('starter.controllers', [])
 
     $scope.cancelAcceptance = function () {
       TicketService.setTicketSubmitted(false);
-      $state.go('ticket.ticket');
+
+      $state.go('ticket.ticket', {}, {reload:true});
     };
 
     function extraButtons(currentState) {
