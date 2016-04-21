@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
     $scope.cancelAcceptance = function () {
       TicketService.setTicketSubmitted(false);
 
-      $state.go('ticket.ticket', {}, {reload:true});
+      $state.go('ticket.ticket');
     };
 
     function extraButtons(currentState) {
@@ -151,7 +151,45 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller('truckCodeCtrl', function ($scope, TicketService, $state) {
+  .controller('truckCodeCtrl', function ($scope, TicketService, $state, $rootScope) {
+
+    $scope.message = 'You launched without a URL';
+
+    $scope.$watch(function(){
+      return window.localStorage.getItem("external_load");
+    }, function(newVal, oldVal){
+      if(oldVal!==newVal && (newVal !== 'undefined' && newVal !== undefined && newVal !== null)) {
+        console.log('newVal');
+        console.log(newVal);
+        $scope.message = window.localStorage.getItem("external_load");
+        window.localStorage.setItem("external_load", undefined);
+      }
+    });
+
+    $rootScope.$on('urlReceived', function (e) {
+      console.log('entering view');
+
+          $scope.message = window.localStorage.getItem("external_load");
+          console.log('THE MESSAGEasdf IS...');
+          console.log($scope.message);
+          window.localStorage.removeItem("external_load");
+
+    });
+
+    document.addEventListener('resume', function(){
+      $scope.$apply(function(){
+        $scope.message = window.localStorage.getItem("external_load");
+        window.localStorage.removeItem("external_load");
+      });
+      $scope.message = window.localStorage.getItem("external_load");
+      console.log('THE MESSAGE IS...');
+      console.log($scope.message)
+    }, false);
+
+
+    document.addEventListener('pause', function(){
+      console.log("Sleepy time now.")
+    }, false);
 
     $scope.setTruckCode = function (truckCode) {
 

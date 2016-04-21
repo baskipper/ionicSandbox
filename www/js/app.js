@@ -4,9 +4,17 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+
+var handleOpenURL = function(url) {
+  window.localStorage.setItem("external_load", url);
+
+  console.log(url);
+};
+
+
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives', 'ionic-timepicker', 'ticket.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $timeout) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,6 +26,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
+    }
+    if(typeof window.localStorage.getItem("external_load") !== "undefined")
+    {
+      $timeout(function(){
+        //$rootScope.$broadcast('urlReceived', window.localStorage.getItem("external_load"))
+      }, 1000)
+
     }
   });
 })
