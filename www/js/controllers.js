@@ -166,16 +166,6 @@ angular.module('starter.controllers', [])
       }
     });
 
-    $rootScope.$on('urlReceived', function (e) {
-      console.log('entering view');
-
-          $scope.message = window.localStorage.getItem("external_load");
-          console.log('THE MESSAGEasdf IS...');
-          console.log($scope.message);
-          window.localStorage.removeItem("external_load");
-
-    });
-
     document.addEventListener('resume', function(){
       $scope.$apply(function(){
         $scope.message = window.localStorage.getItem("external_load");
