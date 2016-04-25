@@ -155,34 +155,13 @@ angular.module('starter.controllers', [])
 
     $scope.message = 'You launched without a URL';
 
-    $scope.$watch(function(){
-      return window.localStorage.getItem("external_load");
-    }, function(newVal, oldVal){
-      if(oldVal!==newVal && (newVal !== 'undefined' && newVal !== undefined && newVal !== null)) {
-        console.log('newVal');
-        console.log(newVal);
-        $scope.message = window.localStorage.getItem("external_load");
-        window.localStorage.setItem("external_load", undefined);
-      }
+    $rootScope.$on('handleopenurl', function(e, url){
+      $scope.$apply(function(){
+        $scope.message = url;
+      })
     });
 
-    document.addEventListener('resume', function(){
-      $scope.$apply(function(){
-        $scope.message = window.localStorage.getItem("external_load");
-        window.localStorage.removeItem("external_load");
-      });
-      $scope.message = window.localStorage.getItem("external_load");
-      console.log('THE MESSAGE IS...');
-      console.log($scope.message)
-    }, false);
-
-
-    document.addEventListener('pause', function(){
-      console.log("Sleepy time now.")
-    }, false);
-
     $scope.setTruckCode = function (truckCode) {
-
       console.log('TruckCode Set to ' + truckCode);
       TicketService.setTruckCode(truckCode);
       console.log('TruckCode saved to TicketService as ' + TicketService.truckCode);
@@ -943,4 +922,39 @@ angular.module('starter.controllers', [])
         "terms": "Terms!"
       }
     };
-  });
+  })
+
+.factory('OpenUrlService', ['$log', '$location', '$rootScope', '$ionicHistory', function ($log, $location, $rootScope, $ionicHistory) {
+
+  var openUrl = function (url) {
+
+    console.log('Handling open URL ' + url);
+
+    if (url) {
+      $rootScope.$broadcast('handleopenurl', url);
+      console.log('Broadcasting url ' + url);
+      window.cordova.removeDocumentEventHandler('handleopenurl');
+      window.cordova.addStickyDocumentEventHandler('handleopenurl');
+      document.removeEventListener('handleopenurl', handleOpenUrl);
+    }
+  };
+
+  var handleOpenUrl = function (e) {
+    openUrl(e.url);
+  };
+
+  var onResume = function () {
+    document.addEventListener('handleopenurl', handleOpenUrl, false);
+  };
+
+  return {
+    handleOpenUrl: handleOpenUrl,
+    onResume: onResume
+  };
+
+}]).run(['OpenUrlService', function (OpenUrlService) {
+  if (OpenUrlService) {
+    document.addEventListener('handleopenurl', OpenUrlService.handleOpenUrl, false);
+    document.addEventListener('resume', OpenUrlService.onResume, false);
+  }
+}]);

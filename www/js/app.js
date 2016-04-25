@@ -5,10 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-var handleOpenURL = function(url) {
-  window.localStorage.setItem("external_load", url);
 
-  console.log(url);
+if ('cordova' in window) {
+  // Create a sticky event for handling the app being opened via a custom URL
+  cordova.addStickyDocumentEventHandler('handleopenurl');
+}
+
+function handleOpenURL (url) {
+  cordova.fireDocumentEvent('handleopenurl', { url: url });
 };
 
 
